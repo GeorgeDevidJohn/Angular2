@@ -1,0 +1,585 @@
+<div class="p-8">
+  <div
+    id="default-modal"
+    *ngIf="openstartModal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="flex justify-center items-center fixed top-0 right-0 bottom-0 left-0 z-50 bg-[#000000a6]"
+  >
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <!-- Modal header -->
+        <div class="flex flex-col items-center justify-center flex-nowrap mb-8">
+          <p
+            class="text-3xl mt-16 font-medium text-blue-600 tracking-tight sm:text-2xl"
+          >
+            Whats Your Title ?
+          </p>
+          <div
+            class="flex items-center justify-center gap-y-4 px-12 flex-wrap gap-x-4 text-md mt-6 mb-6"
+          >
+            <a
+              (click)="fillInput('Software Developer')"
+              [@bounceIn800]
+              class="relative z-10 rounded-full dark:taxt-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+            >
+              Software Developer
+            </a>
+            <a
+              (click)="fillInput('Web Developer')"
+              [@bounceIn500]
+              class="relative z-10 animate-bounceIn duration-500 ease-out rounded-full dark:taxt-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+            >
+              Web Developer
+            </a>
+            <a
+              (click)="fillInput('Data Analyst')"
+              class="relative z-10 rounded-full dark:text-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+              [@bounceIn]
+            >
+              Data Analyst
+            </a>
+            <a
+              (click)="fillInput(' Web Designer')"
+              [@bounceIn700]
+              class="relative z-10 rounded-full dark:taxt-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+            >
+              Web Designer
+            </a>
+            <a
+              (click)="fillInput('Python Programmer')"
+              [@bounceIn600]
+              class="relative z-10 rounded-full dark:taxt-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+            >
+              Python Programmer
+            </a>
+            <a
+              (click)="fillInput('Full Stack Developer')"
+              [@bounceIn500]
+              class="relative z-10 rounded-full dark:taxt-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+            >
+              Full Stack Developer
+            </a>
+            <a
+              (click)="fillInput('Mern Stack Developer')"
+              [@bounceIn800]
+              class="relative z-10 rounded-full dark:taxt-gray-100 bg-gray-100 text-blue-500 px-3 py-1.5 font-medium hover:text-blue-800 hover:bg-gray-100"
+            >
+              Mern Stack Developer
+            </a>
+          </div>
+          <form
+            [formGroup]="titleForm"
+            (ngSubmit)="addTitle()"
+            class="flex justify-center"
+          >
+            <div>
+              <div class="flex justify-end px-4 pt-4"></div>
+              <div class="flex flex-col items-center pb-10">
+                <h5 class="mb-4 text-lg text-gray-600 dark:text-white">or</h5>
+                <div>
+                  <input
+                    w-full
+                    type="text"
+                    name="jobTitle"
+                    formControlName="jobTitle"
+                    id="url"
+                    class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Devops"
+                    required
+                  />
+                  @if(titleForm.get('jobTitle')?.invalid &&
+                  titleForm.get('jobTitle')?.touched){<span class="text-red-600"
+                    >required</span
+                  >}
+                </div>
+
+                <div></div>
+
+                <button
+                  type="submit"
+                  [disabled]="!titleForm.valid"
+                  class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border  border-transparent bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 mt-4 dark:focus:ring-gray-600"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section
+    
+  >
+  <div class="absolute inset-x-0 top-[calc(100%-13rem)] sm:block hidden -z-10 transform-gpu overflow-hidden  blur-3xl  sm:top-[calc(100%-45rem)] sm:left-[calc(100%-173rem)]"  aria-hidden="true">
+    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#1d4ed8] to-[#3b82f6] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+</div>
+    <div class="flex justify-center">
+      <div class="sm:w-[40rem]  w-[30rem] flex justify-center">
+        <ol class="grid grid-cols-5 items-center w-full  mb-4 mt-8 sm:mb-5">
+          <li
+            class="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0"
+            >
+              <svg
+                class="w-4 h-4 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 16"
+              >
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM6.5 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.014 13.021l.157-.625A3.427 3.427 0 0 1 6.5 9.571a3.426 3.426 0 0 1 3.322 2.805l.159.622-6.967.023ZM16 12h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li
+            class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700"
+          >
+            <div
+              [class.bg-blue-100]="currentStep > 1"
+              class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                height="20"
+                width="20"
+              >
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path
+                  fill="#2563eb"
+                  d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li
+            class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700"
+          >
+            <div
+              [class.bg-blue-100]="currentStep > 2"
+              class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20"
+                viewBox="0 0 512 512"
+              >
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path
+                  fill="#2563eb"
+                  d="M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96v32V480H128V128 96zM64 96H96V480H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64zM448 480H416V96h32c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li
+            class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700"
+          >
+            <div
+              [class.bg-blue-100]="currentStep > 3"
+              class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20"
+                viewBox="0 0 384 512"
+              >
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path
+                  fill="#2563eb"
+                  d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li class="flex items-center w-full">
+            <div
+              [class.bg-blue-100]="currentStep > 4"
+              class="flex items-center justify-center w-10 h-10 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0"
+            >
+              <svg
+                class="w-4 h-4 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 18 20"
+              >
+                <path
+                  d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z"
+                />
+              </svg>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 1" class="max-w-4xl h-full  sm:mx-auto  mx-4 my-8">
+      <div class=" rounded-lg bg-white backdrop-blur-[100rem]  shadow-md p-6">
+        <form [formGroup]="personalForm" (ngSubmit)="addPersonal()">
+          <h3
+            class="mb-4 text-lg font-medium leading-none text-gray-900 dark:text-white"
+          >
+            Personal details
+          </h3>
+          <div class="grid gap-4 mb-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="firstName"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >First Name</label
+              >
+              <input
+                name="First Name"
+                formControlName="firstName"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+              />
+              @if(personalForm.get('firstName')?.invalid &&
+              personalForm.get('firstName')?.touched){<span class="text-red-600"
+                >First Name is required</span
+              >}
+            </div>
+            <div>
+              <label
+                for="lastName"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Last Name</label
+              >
+              <input
+                name="lastName"
+                formControlName="lastName"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+              />
+              @if(personalForm.get('lastName')?.invalid &&
+              personalForm.get('lastName')?.touched){<span class="text-red-600"
+                >Last Name is required</span
+              >}
+            </div>
+            <div class="sm:col-span-2">
+              <label
+                for="summary"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Summary (Max 50 words)</label
+              >
+              <textarea
+                name="summary"
+                formControlName="summary"
+                id="summary"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Summary (Max 50 words)"
+                maxlength="300"
+                required=""
+              ></textarea>
+              @if(personalForm.get('summary')?.invalid &&
+              personalForm.get('summary')?.touched){<span class="text-red-600"
+                >Summary is required</span
+              >}
+            </div>
+            <div class="sm:col-span-2">
+              <label
+                for="skills"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Skills (Max 10 skills comma seprated)</label
+              >
+              <input
+                name="skills"
+                formControlName="skills"
+                id="summary"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Summary (Max 50 words)"
+                maxlength="50"
+                required=""
+              />
+              @if(personalForm.get('skills')?.invalid &&
+              personalForm.get('skills')?.touched){<span class="text-red-600"
+                >Skills are required</span
+              >}
+            </div>
+            <div>
+              <label
+                for="gitLink"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >GitHub Link</label
+              >
+              <input
+                type="text"
+                name="gitLink"
+                id="gitLink"
+                formControlName="gitLink"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="GitHub Link"
+              />
+            </div>
+            <div>
+              <label
+                for="linkedinLink"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >LinkedIn Link</label
+              >
+              <input
+                type="text"
+                formControlName="linkedinLink"
+                id="linkedinLink"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="LinkedIn Link"
+              />
+            </div>
+            <div>
+              <label
+                for="phone"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Phone</label
+              >
+              <input
+                type="number"
+                name="phone"
+                id="phone"
+                formControlName="phone"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Phone"
+                required=""
+              />
+              @if(personalForm.get('phone')?.invalid &&
+              personalForm.get('phone')?.touched){<span class="text-red-600"
+                >Phone is required</span
+              >}
+            </div>
+            <div>
+              <label
+                for="address"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Address</label
+              >
+              <input
+                type="text"
+                name="address"
+                formControlName="address"
+                id="address"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Address"
+                required=""
+              />
+              @if(personalForm.get('address')?.invalid &&
+              personalForm.get('address')?.touched){<span class="text-red-600"
+                >Summary is required</span
+              >}
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Email</label
+              >
+              <input
+                name="email"
+                formControlName="email"
+                type="email"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+              />
+              @if(personalForm.get('email')?.invalid &&
+              personalForm.get('email')?.touched){<span class="text-red-600"
+                >Provide valid email</span
+              >}
+            </div>
+            <div>
+              <label
+                for="profilePicture"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Profile Picture</label
+              >
+              <input
+                type="file"
+                name="profilePicture"
+                id="profilePicture"
+                formControlName="profilePicture"
+                accept="image/*"
+                class="hidden"
+              />
+              <label
+                for="profilePicture"
+                class="flex items-center px-4 py-2 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  ></path>
+                </svg>
+                Upload Picture
+              </label>
+            </div>
+          </div>
+          <button
+            [disabled]="!personalForm.valid"
+            type="submit"
+            class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          >
+            Next
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div
+      *ngIf="currentStep === 2"
+      [@slideIn] 
+      class="max-w-6xl  sm:mx-auto  mx-4 mt-8 mb-8"
+    >
+      <app-education #childRef (emitFunction)="saveEducation($event)"/>
+
+      <button
+        (click)="edunextStep()"
+        class="text-white w-40 mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      >
+        Next
+      </button>
+    </div>
+    <div
+      *ngIf="currentStep === 3"
+      [@slideIn] 
+      class="max-w-6xl sm:mx-auto  mx-4 mt-8 mb-8"
+    >
+      <app-experiance  #childRefExp />
+
+      <button
+        (click)="expnextStep()"
+        class="text-white w-40 mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      >
+        Next
+      </button>
+    </div>
+    <div
+      *ngIf="currentStep === 4"
+      [@slideIn] 
+      class="max-w-6xl sm:mx-auto  mx-4 mt-8 mb-8"
+    >
+      <app-projects  #childRefProj/>
+
+      <button
+        (click)="pronextStep()"
+        [disabled]=""
+        class="text-white w-40 mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      >
+        Next step
+      </button>
+    </div>
+    <div *ngIf="currentStep === 5" [@slideIn] class="sm:w-[100%] sm:mx-auto  mx-4 mt-4 mb-8">
+      <div >
+        <div class="mx-auto max-w-7xl lg:px-8">
+          <form (ngSubmit)="addFinal()" [formGroup]="themeForm" >
+            <div
+              class="mx-auto mt-16 max-w-2xl bg-white rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
+            >
+              <div class="p-8 sm:p-10 lg:flex-auto">
+                <h3 class="text-2xl font-bold tracking-tight text-gray-900">
+                  Choose your URL
+                </h3>
+                <p class="mt-6 text-base leading-7 text-gray-600">
+                  For your resume or LinkedIn, choose a custom URL with your name
+                  for a professional touch. Here’s the customization process:
+                </p>
+                <div class="mt-10 flex items-center gap-x-4">
+                  <h4
+                    class="flex-none text-sm font-semibold leading-6 text-blue-600"
+                  >
+                    Enter your url
+                  </h4>
+                  <div class="h-px flex-auto bg-gray-100"></div>
+                </div>
+                <ul
+                  role="list"
+                  class="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                >
+                  <li class="flex gap-x-3">
+                    <div class="flex">
+                      <div
+                        class="bg-white flex items-center font-bold text-lg justify-center text-center rounded-md w-[40px]"
+                      >
+                        /
+                      </div>
+                      <input
+                        type="text"
+                        name="url"
+                        formControlName="url"
+                        id="url"
+                        class="w-full rounded border bg-white px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                        placeholder="sample-portfolio"
+                        required
+                      />
+                    </div>
+                  </li>
+                  <br />
+                  @if(themeForm.get('url')?.invalid  && themeForm.get('url')?.touched){<span class="text-red-600"
+                    >required</span
+                  >}
+                </ul>
+              </div>
+              <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+                <div
+                  class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16"
+                >
+                  <div class="mx-auto max-w-xs px-8">
+                    <p class="text-base font-semibold text-gray-600 mb-8">
+                      Select your theme
+                    </p>
+                    <div class="flex gap-4 themeselector">
+                      <div>
+                        <input type="radio" formControlName="theme" name="theme" id="red" value="red" required />
+                        <label for="red"><span class="red"></span></label>
+                      </div>
+                      <div>
+                        <input type="radio" name="theme" formControlName="theme" id="green" value="green" required/>
+                        <label for="green"><span class="green"></span></label>
+                      </div>
+    
+                      <div>
+                        <input type="radio" name="theme" formControlName="theme" id="orange" value="orange" required/>
+                        <label for="orange"><span class="orange"></span></label>
+                      </div>
+                      <div>
+                        <input type="radio" name="theme" formControlName="theme" id="blue" value="blue"  required/>
+                        <label for="blue"><span class="blue"></span></label>
+                      </div>
+                      <div>
+                        <input type="radio" name="theme" formControlName="theme" id="violet" value="violet"  required/>
+                        <label for="violet"><span class="violet"></span></label>
+                      </div>
+                    </div>
+    
+                    <button
+                     [disabled]="!themeForm.valid"
+                     class="w-40 py-3 px-4 inline-flex justify-center gap-y-2 mt-4 items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                     >Submit</button
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+     <div class="absolute inset-x-0 top-[calc(100%-13rem)] sm:block hidden -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-45rem)]" aria-hidden="true">
+              <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#1d4ed8] to-[#3b82f6] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        
+           
+          </div>
+  </section>
+</div>

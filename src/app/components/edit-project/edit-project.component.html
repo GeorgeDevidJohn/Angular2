@@ -1,0 +1,843 @@
+<button
+  data-drawer-target="default-sidebar"
+  (click)="openSide()"
+  data-drawer-toggle="default-sidebar"
+  aria-controls="default-sidebar"
+  type="button"
+  class="inline-flex items-center p-2 mt-2 ms-4 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+>
+  <span class="sr-only">Open sidebar</span>
+  <svg
+    class="w-6 h-6"
+    aria-hidden="true"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+    ></path>
+  </svg>
+</button>
+
+<!-- -------------for mobile---------- -->
+
+<aside
+  id="default-sidebar"
+  [@slideIn]
+  *ngIf="showNav"
+  class="fixed top-0 left-0 z-40 w-full h-screen"
+  aria-label="Sidebar"
+>
+  <div class="h-full px-3 py-4 overflow-y-auto bg-[#272c3e] dark:bg-gray-800">
+    <ul class="space-y-6 font-medium leading-[3rem]">
+      <li class="flex justify-between items-center">
+        <div
+          class="flex items-center gap-4 bg-[#ffffffc4] rounded-full w-[60%] p-2"
+        >
+          <img
+            class="w-12 h-12 rounded-full"
+            src="https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg"
+            alt=""
+          />
+          <div class="font-medium text-sm dark:text-white">
+            <div>Jese Leos</div>
+          </div>
+        </div>
+
+        <button
+          (click)="openSide()"
+          class="p-1 rounded-lg text-end focus:outline-none focus:ring"
+        >
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#f9fafb"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              style="color: white"
+              fill="#f9fafb"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          <span class="sr-only">Close sidebar</span>
+        </button>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(1)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Personal Info</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(2)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Education</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(3)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96v32V480H128V128 96zM64 96H96V480H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64zM448 480H416V96h32c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64z"
+            />
+          </svg>
+
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Experience</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(4)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Projects</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(5)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >URL</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="/login"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Sign Out</span
+          >
+        </a>
+      </li>
+    </ul>
+    <div
+      id="dropdown-cta"
+      *ngIf="showDiv"
+      [@slideIn]
+      class="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900"
+      role="alert"
+    >
+      <div class="flex items-center mb-3">
+        <span
+          class="bg-orange-100 text-orange-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900"
+          >Pro +</span
+        >
+        <button
+          type="button"
+          (click)="hideDiv()"
+          class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 inline-flex justify-center items-center w-6 h-6 text-blue-900 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 hover:bg-blue-200 h-6 w-6 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800"
+          data-dismiss-target="#dropdown-cta"
+          aria-label="Close"
+        >
+          <svg
+            class="w-2.5 h-2.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+        </button>
+      </div>
+      <p class="mb-3 text-sm text-blue-800 dark:text-blue-400">
+        Update to pro and untimiled projects.
+      </p>
+      <a
+        class="text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+        href="#"
+        >Upgrade Now</a
+      >
+    </div>
+  </div>
+</aside>
+
+<!-- 
+ ---------------------------------------------- -->
+<aside
+  id="default-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+  aria-label="Sidebar"
+>
+  <div class="h-full px-3 py-4 overflow-y-auto bg-[#272c3e] dark:bg-gray-800">
+    <ul class="space-y-6 font-medium leading-[3rem]">
+      <li class="flex justify-between items-center">
+        <div
+          class="flex items-center gap-4 bg-[#ffffffc4] rounded-full w-full p-2"
+        >
+          <img
+            class="w-10 h-110 rounded-full"
+            src="https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg"
+            alt=""
+          />
+          <div class="font-medium text-sm dark:text-white">
+            <div>Jese Leos</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(1)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Personal Info</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(2)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Education</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(3)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96v32V480H128V128 96zM64 96H96V480H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64zM448 480H416V96h32c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64z"
+            />
+          </svg>
+
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Experience</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(4)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Projects</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="valueSide(5)"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >URL</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="/login"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+        >
+          <svg
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              fill="gray"
+              d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+            />
+          </svg>
+          <span class="flex-1 ms-4 whitespace-nowrap text-sm text-gray-50"
+            >Sign Out</span
+          >
+        </a>
+      </li>
+    </ul>
+    <div
+      id="dropdown-cta"
+      *ngIf="showDiv"
+      [@slideIn]
+      class="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900"
+      role="alert"
+    >
+      <div class="flex items-center mb-3">
+        <span
+          class="bg-orange-100 text-orange-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900"
+          >Pro +</span
+        >
+        <button
+          (click)="hideDiv()"
+          type="button"
+          class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 inline-flex justify-center items-center w-6 h-6 text-blue-900 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 hover:bg-blue-200 h-6 w-6 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800"
+          data-dismiss-target="#dropdown-cta"
+          aria-label="Close"
+        >
+          <svg
+            class="w-2.5 h-2.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+        </button>
+      </div>
+      <p class="mb-3 text-sm text-blue-800 dark:text-blue-400">
+        Update to pro and untimiled projects.
+      </p>
+      <a
+        class="text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+        href="#"
+        >Upgrade Now</a
+      >
+    </div>
+  </div>
+</aside>
+<div
+  class="absolute inset-x-0 top-[calc(100%-13rem)] sm:block hidden -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-45rem)] sm:left-[calc(100%-173rem)]"
+  aria-hidden="true"
+>
+  <div
+    class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#1d4ed8] to-[#3b82f6] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+    style="
+      clip-path: polygon(
+        74.1% 44.1%,
+        100% 61.6%,
+        97.5% 26.9%,
+        85.5% 0.1%,
+        80.7% 2%,
+        72.5% 32.5%,
+        60.2% 62.4%,
+        52.4% 68.1%,
+        47.5% 58.3%,
+        45.2% 34.5%,
+        27.5% 76.7%,
+        0.1% 64.9%,
+        17.9% 100%,
+        27.6% 76.8%,
+        76.1% 97.7%,
+        74.1% 44.1%
+      );
+    "
+  ></div>
+</div>
+<div class="p-4 sm:ml-64">
+  <div
+    *ngIf="setCurrentSection === 1"
+    class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
+    [@bounceIn800]
+  >
+    <h2 class="text-3xl font-medium leading-none text-gray-900 dark:text-white">
+      Personal Details
+    </h2>
+    <div class="bg-white backdrop-blur-[100rem] rounded-lg p-6">
+      <form [formGroup]="personalForm" (ngSubmit)="addPersonal()">
+        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+          <div>
+            <label
+              for="firstName"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >First Name</label
+            >
+            <input
+              name="First Name"
+              formControlName="firstName"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+            />
+            @if(personalForm.get('firstName')?.invalid &&
+            personalForm.get('firstName')?.touched){<span class="text-red-600"
+              >First Name is required</span
+            >}
+          </div>
+          <div>
+            <label
+              for="lastName"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Last Name</label
+            >
+            <input
+              name="lastName"
+              formControlName="lastName"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+            />
+            @if(personalForm.get('lastName')?.invalid &&
+            personalForm.get('lastName')?.touched){<span class="text-red-600"
+              >Last Name is required</span
+            >}
+          </div>
+          <div class="sm:col-span-2">
+            <label
+              for="summary"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Summary (Max 50 words)</label
+            >
+            <textarea
+              name="summary"
+              formControlName="summary"
+              id="summary"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+              placeholder="Summary (Max 50 words)"
+              maxlength="50"
+              required=""
+            ></textarea>
+            @if(personalForm.get('summary')?.invalid &&
+            personalForm.get('summary')?.touched){<span class="text-red-600"
+              >Summary is required</span
+            >}
+          </div>
+          <div class="sm:col-span-2">
+            <label
+              for="skills"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Skills (Max 10 skills comma seprated)</label
+            >
+            <input
+              name="skills"
+              formControlName="skills"
+              id="summary"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+              placeholder="Summary (Max 50 words)"
+              maxlength="50"
+              required=""
+            />
+            @if(personalForm.get('skills')?.invalid &&
+            personalForm.get('skills')?.touched){<span class="text-red-600"
+              >Skills are required</span
+            >}
+          </div>
+          <div>
+            <label
+              for="gitLink"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >GitHub Link</label
+            >
+            <input
+              type="text"
+              name="gitLink"
+              id="gitLink"
+              formControlName="gitLink"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+              placeholder="GitHub Link"
+            />
+          </div>
+          <div>
+            <label
+              for="linkedinLink"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >LinkedIn Link</label
+            >
+            <input
+              type="text"
+              formControlName="linkedinLink"
+              id="linkedinLink"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+              placeholder="LinkedIn Link"
+            />
+          </div>
+          <div>
+            <label
+              for="phone"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Phone</label
+            >
+            <input
+              type="number"
+              name="phone"
+              id="phone"
+              formControlName="phone"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+              placeholder="Phone"
+              required=""
+            />
+            @if(personalForm.get('phone')?.invalid &&
+            personalForm.get('phone')?.touched){<span class="text-red-600"
+              >Phone is required</span
+            >}
+          </div>
+          <div>
+            <label
+              for="address"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Address</label
+            >
+            <input
+              type="text"
+              name="address"
+              formControlName="address"
+              id="address"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+              placeholder="Address"
+              required=""
+            />
+            @if(personalForm.get('address')?.invalid &&
+            personalForm.get('address')?.touched){<span class="text-red-600"
+              >Summary is required</span
+            >}
+          </div>
+          <div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Email</label
+            >
+            <input
+              name="email"
+              formControlName="email"
+              type="email"
+              class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
+            />
+            @if(personalForm.get('email')?.invalid &&
+            personalForm.get('email')?.touched){<span class="text-red-600"
+              >Provide valid email</span
+            >}
+          </div>
+          <div>
+            <label
+              for="profilePicture"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Profile Picture</label
+            >
+            <input
+              type="file"
+              name="profilePicture"
+              id="profilePicture"
+              formControlName="profilePicture"
+              accept="image/*"
+              class="hidden"
+            />
+            <label
+              for="profilePicture"
+              class="flex items-center px-4 py-2 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                ></path>
+              </svg>
+              Upload Picture
+            </label>
+          </div>
+        </div>
+        <button
+          [disabled]="!personalForm.valid"
+          type="submit"
+          class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+        >
+          Next
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div
+    *ngIf="setCurrentSection === 2"
+    class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
+    [@bounceIn800]
+  >
+    <app-education />
+  </div>
+  <div
+    *ngIf="setCurrentSection === 3"
+    class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
+    [@bounceIn800]
+  >
+    <app-experiance />
+  </div>
+  <div
+    *ngIf="setCurrentSection === 4"
+    class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
+    [@bounceIn800]
+  >
+    <app-projects />
+  </div>
+  <div class=" " *ngIf="setCurrentSection === 5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <form (ngSubmit)="addFinal()" [formGroup]="themeForm">
+        <div
+          class="mx-auto mt-16 max-w-2xl bg-white rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
+        >
+          <div class="p-8 sm:p-10 lg:flex-auto">
+            <h3 class="text-2xl font-bold tracking-tight text-gray-900">
+              Choose your URL
+            </h3>
+            <p class="mt-6 text-base leading-7 text-gray-600">
+              For your resume or LinkedIn, choose a custom URL with your name
+              for a professional touch. Here’s the customization process:
+            </p>
+            <div class="mt-10 flex items-center gap-x-4">
+              <h4
+                class="flex-none text-sm font-semibold leading-6 text-blue-600"
+              >
+                Enter your url
+              </h4>
+              <div class="h-px flex-auto bg-gray-100"></div>
+            </div>
+            <ul
+              role="list"
+              class="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+            >
+              <li class="flex gap-x-3">
+                <div class="flex">
+                  <div
+                    class="bg-white flex items-center font-bold text-lg justify-center text-center rounded-md w-[40px]"
+                  >
+                    /
+                  </div>
+                  <input
+                    type="text"
+                    name="url"
+                    ngModel
+                    #url="ngModel"
+                    id="url"
+                    class="w-full rounded border bg-white px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                    placeholder="sample-portfolio"
+                    required
+                  />
+                </div>
+              </li>
+              <br />
+              @if(url.invalid && url.touched){<span class="text-red-600"
+                >required</span
+              >}
+            </ul>
+          </div>
+          <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+            <div
+              class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16"
+            >
+              <div class="mx-auto max-w-xs px-8">
+                <p class="text-base font-semibold text-gray-600 mb-8">
+                  Select your theme
+                </p>
+                <div class="flex gap-4 themeselector">
+                  <div>
+                    <input type="radio" name="theme" id="red" value="red" />
+                    <label for="red"><span class="red"></span></label>
+                  </div>
+                  <div>
+                    <input type="radio" name="theme" id="green" />
+                    <label for="green"><span class="green"></span></label>
+                  </div>
+
+                  <div>
+                    <input type="radio" name="theme" id="orange" />
+                    <label for="orange"><span class="orange"></span></label>
+                  </div>
+                  <div>
+                    <input type="radio" name="theme" id="blue" />
+                    <label for="blue"><span class="blue"></span></label>
+                  </div>
+                  <div>
+                    <input type="radio" name="theme" id="violet" />
+                    <label for="violet"><span class="violet"></span></label>
+                  </div>
+                </div>
+
+                <a
+                  href="#"
+                  class="mt-10 block w-full rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  >Submit</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div
+  class="absolute inset-x-0 top-[calc(100%-13rem)] sm:block hidden -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-45rem)]"
+  aria-hidden="true"
+>
+  <div
+    class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#1d4ed8] to-[#3b82f6] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+    style="
+      clip-path: polygon(
+        74.1% 44.1%,
+        100% 61.6%,
+        97.5% 26.9%,
+        85.5% 0.1%,
+        80.7% 2%,
+        72.5% 32.5%,
+        60.2% 62.4%,
+        52.4% 68.1%,
+        47.5% 58.3%,
+        45.2% 34.5%,
+        27.5% 76.7%,
+        0.1% 64.9%,
+        17.9% 100%,
+        27.6% 76.8%,
+        76.1% 97.7%,
+        74.1% 44.1%
+      );
+    "
+  ></div>
+</div>

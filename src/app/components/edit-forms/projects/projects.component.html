@@ -1,0 +1,401 @@
+<div class=" ">
+    <div class="gap-4 flex flex-row items-center ">
+        <h2
+        class=" text-3xl font-medium leading-none text-gray-900 dark:text-white"
+      >
+        Projects
+      </h2>
+      
+        <button data-modal-target="default-modal" (click)="openProModal()" data-modal-toggle="default-modal" class="block text-lg bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+          +
+          </button>
+        </div>
+        <div id="default-modal" *ngIf="openModal"  [@bounceIn800] tabindex="-1" aria-hidden="true" class="flex justify-center items-center fixed top-0 right-0 bottom-0 left-0 z-50 bg-[#000000a6]">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Add Projects
+                        </h3>
+                        <button type="button" (click)="closeProModal()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span  class="sr-only"></span>
+                        </button>
+                    </div>
+    <form (ngSubmit)="addProjects(projectForm)" #projectForm ="ngForm"  >
+      
+        <div class="grid gap-4 p-8 mb-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label
+                for="title"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Project Title</label
+              >
+              <input
+                type="text"
+                ngModel
+               #title="ngModel"
+                name="title"
+                id="firstName"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Title"
+                required
+              />
+              @if(title.invalid && title.touched){<span
+                class="text-red-600"
+                >Title is Required</span
+              >}
+            </div>
+  
+            <div class="sm:col-span-2">
+              <label
+                for="description"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Description</label
+              >
+              <textarea
+                name="description"
+                id="description"
+                ngModel
+                #description = "ngModel"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 h-24 resize-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Description here"
+                maxlength="250"
+                required
+              ></textarea>
+              @if(description.invalid && description.touched){<span
+                class="text-red-600"
+                >Description is Required</span
+              >}
+            </div>
+            <div>
+              <label
+                for="gitLink"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >GitHub Link</label
+              >
+              <input
+                type="text"
+                name="gitLink"
+                id="gitLink"
+                ngModel
+                #gitLink="ngModel"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="GitHub Link"
+               
+              />
+            </div>
+            <div>
+              <label
+                for="skills"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Skills</label
+              >
+              <input
+                type="text"
+                name="skills"
+                ngModel
+               #skills="ngModel"
+                id="linkedinLink"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Add your skills ',' seprate . eg: java, sql, html"
+                required=""
+              />
+              @if(skills.invalid && skills.touched){<span
+                class="text-red-600"
+                >Skills are Required</span
+              >}
+            </div>
+            <div>
+              <label
+                for="learning Outcomes"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >learning Outcomes</label
+              >
+              <input
+                type="text"
+                name="learningOutcomes"
+                ngModel
+                #learningOutcomes="ngModel"
+                id="phone"
+                class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                placeholder="Add your skills ',' seprate."
+                required=""
+              />
+              @if(learningOutcomes.invalid && learningOutcomes.touched){<span
+                class="text-red-600"
+                >Learning Outcomes are Required</span
+              >}
+            </div>
+  
+            <div>
+              <label
+                for="profilePicture"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Profile Picture</label
+              >
+              <input
+                type="file"
+                [(ngModel)]="projectThumnail"
+                name="projectThumnail"
+                id="profilePicture"
+                accept="image/*"
+                class="hidden"
+              />
+              <label
+                for="profilePicture"
+                class="flex items-center px-4 py-2 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  ></path>
+                </svg>
+                Upload Thumnail
+              </label>
+            </div>
+          </div>
+      <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+        <button data-modal-hide="default-modal" [disabled]="!projectForm.form.valid" type="submit"         class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+        >Add</button>
+        <button data-modal-hide="default-modal" type="button" (click)="closeProModal()" class="py-2.5 w-40 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+    </div>
+    </form>
+</div>
+</div>
+</div>
+
+
+<!-- --------edit project------ -->
+<div id="default-modal" *ngIf="openEditProjectModalValue"  [@bounceIn800] tabindex="-1" aria-hidden="true" class="flex justify-center items-center fixed top-0 right-0 bottom-0 left-0 z-50 bg-[#000000a6]">
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                  Edit Projects
+              </h3>
+              <button type="button" (click)="closeProModal()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span  class="sr-only"></span>
+              </button>
+          </div>
+<form (ngSubmit)="editProjects()" [formGroup]="projectForm"  >
+
+<div class="grid gap-4 p-8 mb-4 sm:grid-cols-2">
+  <div class="sm:col-span-2">
+    <label
+      for="title"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Project Title</label
+    >
+    <input
+      type="text"
+      formControlName ="title"
+      name="title"
+      id="firstName"
+      class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+      placeholder="Title"
+      required
+    />
+    @if(projectForm.get('title')?.invalid && projectForm.get('title')?.touched){<span
+      class="text-red-600"
+      >Title is Required</span
+    >}
+  </div>
+
+  <div class="sm:col-span-2">
+    <label
+      for="description"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Description</label
+    >
+    <textarea
+      name="description"
+      id="description"
+      formControlName="description"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 h-24 resize-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Description here"
+      maxlength="250"
+      required
+    ></textarea>
+    @if(projectForm.get('description')?.invalid && projectForm.get('description')?.touched){<span
+      class="text-red-600"
+      >Description is Required</span
+    >}
+  </div>
+  <div>
+    <label
+      for="gitLink"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >GitHub Link</label
+    >
+    <input
+      type="text"
+      name="gitLink"
+      id="gitLink"
+      formControlName = "gitLink"
+      class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+      placeholder="GitHub Link"
+     
+    />
+  </div>
+  <div>
+    <label
+      for="skills"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Skills</label
+    >
+    <input
+      type="text"
+      name="skills"
+      formControlName = "skills"  
+      id="linkedinLink"
+      class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+      placeholder="Add your skills ',' seprate . eg: java, sql, html"
+      required=""
+    />
+    @if(projectForm.get('skills')?.invalid && projectForm.get('skills')?.touched){<span
+      class="text-red-600"
+      >Skills are Required</span
+    >}
+  </div>
+  <div>
+    <label
+      for="learning Outcomes"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >learning Outcomes</label
+    >
+    <input
+      type="text"
+      name="learningOutcomes"
+      formControlName = "learningOutcomes"
+      id="phone"
+      class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+      placeholder="Add your skills ',' seprate."
+      required=""
+    />
+    @if(projectForm.get('learningOutcomes')?.invalid && projectForm.get('learningOutcomes')?.touched){<span
+      class="text-red-600" 
+      >Learning Outcomes are Required</span
+    >}
+  </div>
+
+  <div>
+    <label
+      for="profilePicture"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Profile Picture</label
+    >
+    <input
+      type="file"
+      [(ngModel)]="projectThumnail"
+      name="projectThumnail"
+      id="profilePicture"
+      accept="image/*"
+      class="hidden"
+    />
+    <label
+      for="profilePicture"
+      class="flex items-center px-4 py-2 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500"
+    >
+      <svg
+        class="w-5 h-5 mr-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+        ></path>
+      </svg>
+      Upload Thumnail
+    </label>
+  </div>
+</div>
+<div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+<button data-modal-hide="default-modal" [disabled]="!projectForm.valid" type="submit"         class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+>Save</button>
+<button data-modal-hide="default-modal" type="button" (click)="closeProModal()" class="py-2.5 w-40 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div class="flex flex-wrap px-2  gap-4 mt-4 sm:flex lg:flex">
+    <div *ngFor="let project of projects">
+        <div  class="relative flex w-full max-w-[18rem] flex-col rounded-xl bg-white  text-gray-700 shadow-lg">
+            <div
+               class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500  shadow-blue-gray-500/40">
+              <div class="relative h-[10rem]  overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+               <img
+                src="https://www.sydle.com/blog/assets/post/projects-and-processes-what-is-the-difference-614e00a1a9d8415db45a9230/project-and-process.jpg"
+                alt="ui/ux review check"  width={400} height={100}/>
+              </div>
+              <div
+                 class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
+              </div>
+              <div
+                 class="!absolute  top-4 right-4 h-8 max-h-[32px]  select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              >
+              
+              <a class="relative z-10 rounded-full bg-red-500 px-3 py-1.5 font-medium text-1xl text-white hover:bg-gray-100">
+                Project
+              </a>
+              </div>
+            </div>
+            <div  class="p-6 sm:text-start text-center">
+              <div  class="flex items-center justify-between mb-2">
+                <h5  class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
+                  {{project.title}}
+                </h5>
+              
+              </div>
+              <p  class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+               {{project.description}}
+              </p>
+              <div  class=" flex  justify-between  items-center gap-3 mt-6 ">
+                              
+                <span
+                   class= "border rounded-full border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
+                      <a href={{project.gitLink}}> 
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                      </a>
+          
+                </span>
+                <div class="flex gap-x-4">
+                  <button (click)="openEditProjectModal(project)">
+                  <svg xmlns="http://www.w3.org/2000/svg"  height="20" width="17.5" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="gray" d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg>
+                </button>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20" width="17.5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#dd2222" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+                </div> 
+              </div>
+            </div>
+            
+          </div> 
+          
+    </div>
+  </div>
+  
+  </div>

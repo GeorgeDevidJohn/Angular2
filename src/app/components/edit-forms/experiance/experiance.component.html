@@ -1,0 +1,326 @@
+<div class=" ">
+    <div class="gap-4 flex flex-row items-center ">
+        <h2
+        class=" text-3xl font-medium leading-none text-gray-900 dark:text-white"
+      >
+        Experience
+      </h2>
+      
+        <button data-modal-target="default-modal" (click)="openExpModal()" data-modal-toggle="default-modal" class="block text-lg bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+          +
+          </button>
+        </div>
+        <div id="default-modal" *ngIf="openModal"  [@bounceIn800] tabindex="-1" aria-hidden="true" class="flex justify-center items-center fixed top-0 right-0 bottom-0 left-0 z-50 bg-[#000000a6]">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Add Experience
+                        </h3>
+                        <button type="button" (click)="closeExpModal()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span  class="sr-only"></span>
+                        </button>
+                    </div>
+    <form (ngSubmit)="addQualification(expForm)" #expForm="ngForm">
+      
+      <div class="grid gap-4 p-8 mb-4 sm:grid-cols-2">
+        <div>
+          <label
+            for="position"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Position</label
+          >
+          <input
+            type="text"
+            ngModel
+            #position="ngModel"
+            name="position"
+            id="firstName"
+            class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+            placeholder="Position"
+            required
+          />
+          @if(position.invalid && position.touched){<span
+            class="text-red-600"
+            >Position Required</span
+          >}
+        </div>
+        <div>
+          <label
+            for="college"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Company Name</label
+          >
+          <input
+            type="text"
+            ngModel
+            #companyName="ngModel"
+            name="companyName"
+            id="lastName"
+            class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+            placeholder="Company Name"
+            required
+          />
+          @if(companyName.invalid && companyName.touched){<span
+            class="text-red-600"
+            >Qualification Required</span
+          >}
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="address"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Address</label
+          >
+          <textarea
+            name="companyaddress"
+            id="summary"
+            ngModel
+            #companyaddress="ngModel"
+            class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+            placeholder="Address of the Company"
+            maxlength="250"
+            required=""
+          ></textarea>
+          @if(companyaddress.invalid && companyaddress.touched){<span
+            class="text-red-600"
+            >Address Required</span
+          >}
+        </div>
+        <div>
+          <label
+            for="startDate"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Start Date</label
+          >
+          <input
+          #companystartDate="ngModel"
+            type="date"
+            ngModel
+            name="companystartDate"
+            id="gitLink"
+            class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+            placeholder="Start Date"
+            required=""
+          />
+          @if(companystartDate.invalid && companystartDate.touched){<span
+            class="text-red-600"
+            >Start Required</span
+          >}
+        </div>
+        <div>
+          <label
+            for="endDate"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >End Date</label
+          >
+          <input
+            type="date"
+            ngModel
+            #companyendDate="ngModel"
+            name="companyendDate"
+            id="linkedinLink"
+            class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+            placeholder="End Date"
+            
+          />
+        </div>
+      </div>
+      <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+        <button
+        data-modal-hide="default-modal"
+        type="submit"
+        [disabled]="!expForm.form.valid"
+        class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+      >
+        Add
+      </button>      
+        <button data-modal-hide="default-modal" type="button" (click)="closeExpModal()" class="py-2.5 w-40 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+    </div>
+    </form>
+</div>
+</div>
+</div>
+<!-- ----------------edit form ----------- -->
+<div id="default-modal" *ngIf="opemEditExpModalValue"  [@bounceIn800] tabindex="-1" aria-hidden="true" class="flex justify-center items-center fixed top-0 right-0 bottom-0 left-0 z-50 bg-[#000000a6]">
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                  Edit Experience
+              </h3>
+              <button type="button" (click)="closeExpModal()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span  class="sr-only"></span>
+              </button>
+          </div>
+<form (ngSubmit)="editQualification()"  [formGroup]="expForm" >
+
+<div class="grid gap-4 p-8 mb-4 sm:grid-cols-2">
+<div>
+<label
+  for="position"
+  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  >Position</label
+>
+<input
+  type="text"
+  name="position"
+  formControlName ="position"
+  id="firstName"
+  class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+  placeholder="Position"
+  required
+/>
+@if(expForm.get('position')?.invalid && expForm.get('position')?.touched){<span
+  class="text-red-600"
+  >Position Required</span
+>}
+</div>
+<div>
+<label
+  for="college"
+  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  >Company Name</label
+>
+<input
+  type="text"
+  formControlName="companyName"
+  id="lastName"
+  class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+  placeholder="Company Name"
+  required
+/>
+@if(expForm.get('companyName')?.invalid && expForm.get('companyName')?.touched){<span
+  class="text-red-600"
+  >Qualification Required</span
+>}
+</div>
+<div class="sm:col-span-2">
+<label
+  for="address"
+  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  >Address</label
+>
+<textarea
+  name="companyaddress"
+  id="summary"
+  
+  formControlName ="companyaddress"
+
+  class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+  placeholder="Address of the Company"
+  maxlength="250"
+  required=""
+></textarea>
+@if(expForm.get('companyaddress')?.invalid && expForm.get('companyaddress')?.touched){<span
+  class="text-red-600"
+  >Address Required</span
+>}
+</div>
+<div>
+<label
+  for="startDate"
+  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  >Start Date</label
+>
+<input
+
+  type="date"
+  formControlName = "companystartDate"
+  name="companystartDate"
+  id="gitLink"
+  class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+  placeholder="Start Date"
+  required=""
+/>
+@if(expForm.get('companystartDate')?.invalid && expForm.get('companystartDate')?.touched){<span
+  class="text-red-600"
+  >Start Required</span
+>}
+</div>
+<div>
+<label
+  for="endDate"
+  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  >End Date</label
+>
+<input
+  type="date"
+  formControlName = "companyendDate"
+  name="companyendDate"
+  id="linkedinLink"
+  class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+  placeholder="End Date"
+  
+/>
+</div>
+</div>
+<div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+<button
+data-modal-hide="default-modal"
+type="submit"
+[disabled]="!expForm.valid"
+class="w-40 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+>
+Save
+</button>      
+<button data-modal-hide="default-modal" type="button" (click)="closeExpModal()" class="py-2.5 w-40 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="flex  flex-wrap gap-4 mt-4 sm:flex lg:flex">
+    <div *ngFor="let experience of experiences">
+          <div class="relative max-w-[26rem] whitespace-normal break-words rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+>
+<div class="mb-2 flex flex-wrap items-center gap-3">
+<a
+
+class="block font-sans text-base font-medium leading-relaxed tracking-normal text-blue-gray-900 antialiased transition-colors hover:text-pink-500"
+>
+{{ experience.position }}
+</a>
+<div
+class="center relative inline-block select-none whitespace-nowrap rounded-full bg-red-500 py-1 px-2 align-baseline font-sans text-xs font-medium capitalize leading-none tracking-wide text-white"
+
+>
+<svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M176 56V96H336V56c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zM128 96V56c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56V96v32V480H128V128 96zM64 96H96V480H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64zM448 480H416V96h32c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64z"/></svg></div>
+</div>
+<h3 class="font-bold"> {{experience.companyName}}</h3>
+<p class="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
+{{ experience.companyaddress }}
+</p>
+<div class="mt-4 ">
+  <div class="flex items-center gap-1 justify-between">
+    <div>
+    <span class="h-3 w-3 rounded-full bg-blue-400"></span>
+    <p
+      class="block font-sans text-xs font-normal text-gray-700 antialiased"
+    >
+      {{ experience.companystartDate }} - {{ experience.companyendDate }}
+    </p>
+  </div>
+  <div class="flex gap-x-4">
+    <button (click)="openEditExpModal(experience)">
+    <svg xmlns="http://www.w3.org/2000/svg"  height="20" width="17.5" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="gray" d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg>
+  </button>
+    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="17.5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#dd2222" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+  </div>  </div>
+</div>
+</div>
+          
+    </div>
+  </div>
+  
+  </div>

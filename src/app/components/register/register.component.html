@@ -1,0 +1,150 @@
+
+<div class="relative via-transparent dark:from-blue-950 dark:via-transparent h-screen flex items-center justify-center absolute  left-1/2 transform -translate-x-1/2 ">
+  <div class="max-w-[85rem] px-4 py-10  sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] sm:block hidden -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-45rem)]" aria-hidden="true">
+      <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#1d4ed8] to-[#3b82f6] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+  </div>
+    <div class="grid items-center md:grid-cols-2 gap-8 lg:gap-14">
+      <div >
+        <p class="inline-block text-sm  sm:block hidden font-medium bg-clip-text bg-gradient-to-l from-blue-600 to-violet-500 text-transparent dark:from-blue-400 dark:to-violet-400">
+          Build your Portfolio
+        </p>
+
+        <div class="mt-4 md:mb-12  max-w-2xl">
+          <h2 class="mb-4 sm:block hidden font-semibold text-gray-800 text-4xl lg:text-4xl dark:text-gray-200">
+            Build your Portfolio
+          </h2>
+         
+          <img
+    src="https://framerusercontent.com/images/DjAiPU1Js7PnplUQxXMII0pU7k.png?scale-down-to=1024"
+    alt="ui/ux review check"  width={400} height={100}/>
+   
+        </div>
+      
+      </div>
+   
+
+      <div>
+      
+        <form  [formGroup]="resgisterform" (ngSubmit)="onSubmit()">
+          <div class="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
+         
+            <div class="p-4 sm:p-7 flex flex-col bg-[#ffffff73] backdrop-blur-[90px] rounded-2xl shadow-lg dark:bg-slate-900">
+              <div class="text-center">
+                <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign Up Here</h1>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  Already have an account? 
+                  <a  routerLink="/login" class="text-blue-600 decoration-2  ml-2 no-underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                    Sign in 
+                  </a>
+                  here
+                </p>
+              </div>
+
+              <div class="mt-5">
+              
+
+
+            
+                <div class="grid grid-cols-2 gap-4">
+              
+                  <div>
+                
+                    <div class="relative">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">First Name</label>
+          <input name="firstName"  formControlName="firstName" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+          @if(resgisterform.get('firstName')?.invalid &&
+          resgisterform.get('firstName')?.touched){<span class="text-red-600">First Name is required</span>}           
+        </div>
+                
+                  </div>
+              
+
+              
+                  <div>
+                
+                    <div class="relative">
+                      <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Last Name</label>
+                      <input name="lastName"  formControlName="lastName" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                      @if(resgisterform.get('lastName')?.invalid &&
+                      resgisterform.get('lastName')?.touched){<span class="text-red-600">Last Name is required</span>}       </div>
+               
+                  </div>
+              
+
+             
+                  <div class="col-span-full">
+                 
+                    <div class="relative">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
+          <input name="email" formControlName="email" type="email" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+          @if(resgisterform.get('email')?.invalid &&
+                      resgisterform.get('email')?.touched){<span class="text-red-600">Provide valid email</span>}       </div>
+                         
+        </div>
+               
+                  </div>
+              
+              
+
+              
+                  <div>
+                
+                  
+              
+                  </div>
+              
+
+              
+                  <div class="relative col-span-full">
+                
+                    <div class="relative">
+                    <label  class="mb-2 inline-block text-sm text-gray-800 sm:text-base">New password</label>
+                    <input  type="password" formControlName="password" required name="password" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                    @if(resgisterform.get('password')?.invalid &&
+                    resgisterform.get('password')?.touched){<span class="text-red-600">Password is required</span>}                     
+                    </div>
+                
+
+                   
+                  </div>
+              
+
+              
+                  <div class="col-span-full">
+              
+                    <div class="relative">
+                    <label  class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Confirm password</label>
+                      <input type="password" formControlName="confirmPassword" id="hs-hero-signup-form-floating-input-new-password"class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="********"/>
+                      @if(resgisterform.get('confirmpPassword')?.invalid &&
+                      resgisterform.get('confirmpPassword')?.touched){<span class="text-red-600">Confirm is wrong</span>}  
+                    </div>
+                
+                  </div>
+             
+             
+                </div>
+        
+                <div class="mt-5">
+                  <button type="submit" [disabled]="!resgisterform.valid" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-r  from-cyan-500 to-blue-500 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Get started</button>
+                </div>
+              </div>
+            </div>
+        
+          
+        </form>
+    
+      </div>
+ 
+    </div>
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 sm:block hidden transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-45rem)]" aria-hidden="true">
+      <div class="relative left-[calc(50%+3rem)]  aspect-[1155/678] w-[36.125rem]  -translate-x-1/2 bg-gradient-to-tr from-[#1d4ed8] to-[#3b82f6] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+    </div>
+
+
+  </div>
+  
+</div>
+
+
+
