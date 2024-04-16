@@ -57,24 +57,6 @@ https://job-portal-beryl-theta.vercel.app/api
 
 
 
-### Update Experience
-
-- **Endpoint**: `/experiences`
-- **Method**: `PUT`
-- **Parameters**:
-  - `id`: The ID of the experience to update
-- **Body**:
-
-```json
-{
-  "position": "Software Com Engineer Intern",
-  "companyName": "Tech Company ABC",
-  "address": "456 Tech St, City, Country",
-  "startDate": "2022-06-01",
-  "endDate": "2023-06-01",
-  "userId": "66134da67dadc82ce3151df5"
-}
-
 
 /experiences?id=660a48559fc172261fcc6ea3
 
@@ -94,7 +76,7 @@ https://job-portal-beryl-theta.vercel.app/api
     "endDate": "2024-05-01",
     "userId": "66134da67dadc82ce3151df5"
   }
-```
+
   /educations?id=660a486d9fc172261fcc6ea5
 
 ## Update Project
