@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { CommonModule } from '@angular/common';
@@ -37,8 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     ])   
   ]
 })
-export class EducationComponent {
+export class EducationComponent implements OnInit{
   constructor(private router: Router ,private _dataService: DataService) { }
+  @Input() educationList : any;
   openModal = false;
   openEditEduModalValue = false;
   educations: any[] = [];
@@ -47,12 +48,25 @@ export class EducationComponent {
   address: string = '';
   startDate: string = '';
   endDate: string = '';
+  ngOnInit(): void {
+    console.log("this value:")
+    if(this.educationList){
+      console.log(this.educationList)
+    this.onEdit();
+    }
+  }
+  onEdit(){
+    console.log(this.educationList)
+    this.educations= this.educationList; 
+  }
+ 
 
+  
   addEducation(form: NgForm){
     this.closeEduModal()
     const education = {
       qualification: form.value.qualification,
-      college: form.value.college,
+      college: form.value.collegeName,
       address: form.value.address,
       startDate: form.value.startDate,
       endDate: this.endDate
@@ -97,9 +111,10 @@ export class EducationComponent {
 
 
   patchEducationForm(education :any ){
+    
     this.eduForm.patchValue({
       qualification: education.qualification,
-      college: education.college,
+      college: education.collegeName,
       address: education.address,
       startDate: education.startDate,
       endDate: education.endDate,
@@ -112,10 +127,10 @@ export class EducationComponent {
       qualification: this.eduForm.value.qualification,
       college: this.eduForm.value.college,
       address: this.eduForm.value.address,
-      startDate: this.eduForm.value.startDate,
+      startDate: "2022/02/15",
       endDate: this.eduForm.value.endDate
     };
-    
+   
     // Optionally, you can clear the form fields after submission
     this.clearForm();
     this.closeEduModal();

@@ -5,6 +5,8 @@ import dataSript from '../../datascript';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { DataService } from '../../service/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-resume',
@@ -16,15 +18,42 @@ import { NavigationComponent } from '../navigation/navigation.component';
 
 
 export class ResumeComponent {
+  resumeDetails: any;
+  firstHalf: any;
+  secondHalf: any;
  
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private _dataService: DataService,private route: ActivatedRoute) {
     
-    const foundData = dataSript.find((x) => x.theme.url === "george-devid");
-    console.log(foundData);
-    if (foundData) {
-      console.log(foundData);
-    }
+    this.route.paramMap.subscribe(params => {
+      const username = params.get('userurl');
+      this._dataService.getData(username).subscribe((data) => {
+        
+        if(data.status === 404){
+          this.router.navigateByUrl('/pagenotfound');
+        }{
+        this.resumeDetails = data.data
+        const skillsArray = this.resumeDetails.customer.skills.split(',');
+        const midpointIndex = Math.ceil(skillsArray.length / 2);
+        this.firstHalf = skillsArray.slice(0, midpointIndex);
+        this.secondHalf = skillsArray.slice(midpointIndex);
+        }
+       
+      }); // This will log "george-devid" to the console
+    });
+
+    // this._dataService.getData().subscribe((data) => {
+     
+    //   this.resumeDetails = data.data
+    //   const skillsArray = this.resumeDetails.customer.skills.split(',');
+    //   const midpointIndex = Math.ceil(skillsArray.length / 2);
+    //   this.firstHalf = skillsArray.slice(0, midpointIndex);
+    //   this.secondHalf = skillsArray.slice(midpointIndex);
+    // });
+   
+      
+
+
   }
   activeTab: string = 'skills'; // Default to the 'Skills' tab
 
@@ -37,5 +66,15 @@ export class ResumeComponent {
     console.log(projectId)
     this.router.navigate(['/project', projectId]);
   }
+  onViewProjectDetails(id:any) {
+    this.router.navigateByUrl('/projectdetail/'+id);
+  } 
 
+  onViewAllProject(url:string)
+  {
+   
+    this.router.navigateByUrl('/projects/'+url);
+    
+  }
+ 
 }

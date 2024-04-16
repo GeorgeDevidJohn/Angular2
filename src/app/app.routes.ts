@@ -7,6 +7,7 @@ import { ProjectListComponent } from './components/project-list/project-list.com
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
 import { ResumeComponent } from './components/resume/resume.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
   // { path: '/', component: LoginComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'data', component: DataFillComponent },
   {path: 'edit', component: EditProjectComponent},
   {path:'home',component:HomeComponent},
+  {path:'pagenotfound',component:PagenotfoundComponent},
   {
   path: ':userurl',
   component: ResumeComponent,

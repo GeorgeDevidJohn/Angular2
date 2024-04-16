@@ -6,8 +6,8 @@
       </div>
       <div class="hidden lg:block">
         <ul class="flex space-x-4">
-          <li><a routerLink="/george-devid" class="text-white">Home</a></li>
-          <li><a routerLink="/projects/george-devid" class="text-white">Projects</a></li>       
+          <li><a [routerLink]="'/'+data" class="text-white">Home</a></li>
+          <li><a [routerLink]="'/projects/'+data" class="text-white">Projects</a></li>       
           <li><a routerLink="/login" class="text-white">Login</a></li>
           <!-- Add more links as needed -->
         </ul>
@@ -25,8 +25,8 @@
     </div>
     <div *ngIf="mobileMenuOpen" class="lg:hidden">
       <ul class="mt-2">
-        <li><a routerLink="/home" class="text-white">Home</a></li>
-          <li><a routerLink="/projects" class="text-white">Projects</a></li>       
+        <li><a [routerLink]="'/'+data.urlName" class="text-white">Home</a></li>
+          <li><a [routerLink]="'/projects/'+data.urlName" class="text-white">Projects</a></li>        
           <li><a routerLink="/login" class="text-white">Login</a></li>
         <!-- Add more links as needed -->
       </ul>

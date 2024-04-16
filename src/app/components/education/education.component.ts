@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { CommonModule } from '@angular/common';
@@ -33,7 +33,10 @@ import {
     ])   
   ]
 })
-export class EducationComponent {
+export class EducationComponent  {
+  
+  @Output() addEdu: EventEmitter<any> =
+  new EventEmitter<any>();
   openModal = false;
   educations: any[] = [];
   qualification: string = '';
@@ -42,9 +45,10 @@ export class EducationComponent {
   startDate: string = '';
   endDate: string = '';
 
-  @Output() addEdu: EventEmitter<any> =
-  new EventEmitter<any>();
-
+  
+ 
+  
+ 
   addEducation(form: NgForm){
     this.closeEduModal()
     const education = {

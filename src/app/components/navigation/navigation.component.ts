@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router'
@@ -10,7 +10,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router'
   styleUrl: './navigation.component.css'
 })
 export class NavigationComponent {
- 
+  @Input() data: any;
   mobileMenuOpen = false;
 
   toggleMobileMenu() {

@@ -108,7 +108,9 @@ import { HttpClientModule } from '@angular/common/http';
   ]
 })
 export class EditProjectComponent {
-  constructor(private router: Router ,private _dataService: DataService) { }
+  resumeDetails: any;
+  educationdetails: any;
+  constructor(private router: Router ,private _dataService: DataService) { this.onEdit()}
   showNav = false;
   setCurrentSection = 1;
   showDiv = true;
@@ -142,8 +144,46 @@ export class EditProjectComponent {
   })
 
  
-  addPersonal(){
+onEdit(){
+   {
+    
+    
+      const username = "george-devid";
+      this._dataService.getData(username).subscribe((data) => {
+        
+        if(data.status === 404){
+          this.router.navigateByUrl('/pagenotfound');
+        }{
+        this.resumeDetails = data.data
+        console.log(this.resumeDetails.educations)
+        this.educationdetails = this.resumeDetails.educations
+        this.onPathchPersonalDetails(this.resumeDetails.customer)
+        }
+       
+      }); 
+      
+      console.log(this.resumeDetails)
+      //this.onPathchPersonalDetails(this.resumeDetails.customer)
+      // This will log "george-devid" to the console
 
+}
+}
+
+onPathchPersonalDetails(customer :any ){
+  this.personalForm.patchValue({
+    lastName : customer.lastName,
+    firstName : customer.firstName,
+    summary: customer.summary,
+    phone: customer.phone,
+    email: customer.email,
+    linkedinLink:customer.linkdinLink,
+    gitLink: customer.githubLink,
+    skills: customer.skills,
+    address: customer.address,
+  
+  });
+}
+  addPersonal(){
     const personal = {
       firstName: this.personalForm.value.firstName,
       lastName: this.personalForm.value.lastName,
