@@ -94,7 +94,7 @@ https://job-portal-beryl-theta.vercel.app/api
     "endDate": "2024-05-01",
     "userId": "66134da67dadc82ce3151df5"
   }
-
+```
   /educations?id=660a486d9fc172261fcc6ea5
 
 ## Update Project
