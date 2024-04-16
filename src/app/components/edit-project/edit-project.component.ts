@@ -185,13 +185,14 @@ onPathchPersonalDetails(customer :any ){
 }
   addPersonal(){
     const personal = {
+      _id: this.resumeDetails.customer._id,
       firstName: this.personalForm.value.firstName,
       lastName: this.personalForm.value.lastName,
       summary: this.personalForm.value.summary,
       phone: this.personalForm.value.phone,
       skills: this.personalForm.value.skills,
       email: this.personalForm.value.email,
-      gitLink: this.personalForm.value.gitLink,
+      githubLink: this.personalForm.value.gitLink,
       linkedinLink: this.personalForm.value.linkedinLink,
       address: this.personalForm.value.address,
       profilePicture: this.personalForm.value.profilePicture

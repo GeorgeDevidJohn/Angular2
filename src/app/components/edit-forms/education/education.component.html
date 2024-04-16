@@ -133,6 +133,7 @@
                 name="startDate"
                 #startDate="ngModel"
                 id="gitLink"
+                
                 class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"            
                 placeholder="GitHub Link"
                 required
@@ -299,14 +300,14 @@ class="flex justify-center items-center fixed top-0 right-0 bottom-0 left-0 z-50
           <label
             for="startDate"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Start Date</label
+            >Start Dateedit</label
           >
           <input
             type="date"
             name="startDate"       
-            formControlName ="startDate"         
+            formControlName ="startDate"                 
             class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"            
-            placeholder="GitHub Link"
+            placeholder="Start Date"
             required
           />
           @if(eduForm.get('startDate')?.invalid && eduForm.get('startDate')?.touched){<span

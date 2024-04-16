@@ -23,11 +23,12 @@ export class ProjectDetailsComponent {
       const id = params.get('projectdetail');
       this._dataService.getProjectDetails(id).subscribe((data) => {
         
-        if(data.status != 200){
-          this.router.navigateByUrl('/pagenotfound');
-        }{
+        // if(data.status != 200){
+        //   this.router.navigateByUrl('/pagenotfound');
+        // }
+        {
           console.log(data)
-        this.projectDetails = data.data.project;
+        this.projectDetails = data.data;
         this.urlName = data.urlName;
         this.projectSkillsArray = this.projectDetails.skills.split(',');
         this.projectLearningOutcomeArray = this.projectDetails.learningOutcomes.split(',');

@@ -36,12 +36,12 @@ export class DataService {
     // Make the HTTP POST request with headers included
     return this.http.post<any>(this.apiUrl + "customers", alldetails, options);
   }
-  updatePersonals(alldetails: { firstName: string | null | undefined; lastName: string | null | undefined; summary: string | null | undefined; phone: number | null | undefined; skills: string | null | undefined; email: string | null | undefined; gitLink: string | null | undefined; linkedinLink: string | null | undefined; address: string | null | undefined; profilePicture: null | undefined; }): Observable<any> {
-    return this.http.put<any>(this.apiUrl+"/personal", alldetails);
+  updatePersonals(alldetails: any): Observable<any> {
+    return this.http.put<any>(this.apiUrl+"customers?id="+ alldetails._id , alldetails);
   }
 
-  updateEducation(alldetails: any[]): Observable<any> {
-    return this.http.put<any>(this.apiUrl, alldetails);
+  updateEducation(education: any): Observable<any> {
+    return this.http.put<any>(this.apiUrl+"educations?id="+education._id , education);
   }
   
   updateExperience(alldetails: any[]): Observable<any> {

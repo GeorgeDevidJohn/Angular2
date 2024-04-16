@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
   ]
 })
 export class EducationComponent implements OnInit{
+  startDate: any;
   constructor(private router: Router ,private _dataService: DataService) { }
   @Input() educationList : any;
   openModal = false;
@@ -46,7 +47,7 @@ export class EducationComponent implements OnInit{
   qualification: string = '';
   college: string = '';
   address: string = '';
-  startDate: string = '';
+  // startDate: string = '';
   endDate: string = '';
   ngOnInit(): void {
     console.log("this value:")
@@ -80,11 +81,13 @@ export class EducationComponent implements OnInit{
   }
 
   eduForm = new FormGroup({
+    
     qualification : new FormControl('', [Validators.required]),
     college : new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
-    startDate: new FormControl('', [Validators.required]),
+    startDate: new FormControl( '', [Validators.required]),
     endDate: new FormControl(''),
+    _id: new FormControl('')
   });
 
   clearForm() {
@@ -111,26 +114,49 @@ export class EducationComponent implements OnInit{
 
 
   patchEducationForm(education :any ){
-    
-    this.eduForm.patchValue({
+    const dataToPatch = {
+      _id: education._id,
       qualification: education.qualification,
       college: education.collegeName,
       address: education.address,
-      startDate: education.startDate,
-      endDate: education.endDate,
-    });
+      startDate: this.formatDate(education.startDate), // Example date format (YYYY-MM-DD)
+      endDate: this.formatDate(education.endDate) // Example date format (YYYY-MM-DD)
+    };
+
+    // Patch the values into the form
+    this.eduForm.patchValue(dataToPatch);
+  
+    // this.eduForm.get('startDate').patchValue(this.formatDate(new Date()));
+    // this.eduForm.patchValue({
+    //   qualification: education.qualification,
+    //   college: education.collegeName,
+    //   address: education.address,
+    //   startDate: education.startDate,
+    //   endDate: education.endDate,
+    // });
   }
+    formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+ 
+
+
 
   editEducation(){
     this.closeEduModal()
     const education = {
+      _id: this.eduForm.value._id,
       qualification: this.eduForm.value.qualification,
-      college: this.eduForm.value.college,
+      collegeName: this.eduForm.value.college,
       address: this.eduForm.value.address,
-      startDate: "2022/02/15",
+      startDate: this.eduForm.value.startDate,
       endDate: this.eduForm.value.endDate
     };
-   
+    this._dataService.updateEducation(education).subscribe((data) => console.log(data));
     // Optionally, you can clear the form fields after submission
     this.clearForm();
     this.closeEduModal();
