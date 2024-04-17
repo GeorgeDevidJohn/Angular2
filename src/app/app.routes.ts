@@ -9,8 +9,9 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
 import { ResumeComponent } from './components/resume/resume.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
+
 export const routes: Routes = [
-  // { path: '/', component: LoginComponent },
+  { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
    { path: 'login', component: LoginComponent },
   { path: 'data', component: DataFillComponent },

@@ -40,7 +40,7 @@
             ngModel
             #position="ngModel"
             name="position"
-            id="firstName"
+            id="position"
             class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
             placeholder="Position"
             required
@@ -52,7 +52,7 @@
         </div>
         <div>
           <label
-            for="college"
+            for="company"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >Company Name</label
           >
@@ -61,14 +61,14 @@
             ngModel
             #companyName="ngModel"
             name="companyName"
-            id="lastName"
+            id="companyName"
             class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
             placeholder="Company Name"
             required
           />
           @if(companyName.invalid && companyName.touched){<span
             class="text-red-600"
-            >Qualification Required</span
+            >Company Name Required</span
           >}
         </div>
         <div class="sm:col-span-2">
@@ -79,7 +79,7 @@
           >
           <textarea
             name="address"
-            id="summary"
+            id="address"
             ngModel
             #address="ngModel"
             class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
@@ -103,14 +103,13 @@
             type="date"
             ngModel
             name="startDate"
-            id="gitLink"
+            id="startDate"
             class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
-            placeholder="Start Date"
             required=""
           />
           @if(startDate.invalid && startDate.touched){<span
             class="text-red-600"
-            >Start Required</span
+            >Start Date Required</span
           >}
         </div>
         <div>
@@ -124,10 +123,10 @@
             ngModel
             #endDate="ngModel"
             name="endDate"
-            id="linkedinLink"
+            id="endDate"
             class="w-full rounded border bg-gray-100 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
             placeholder="End Date"
-            
+            [min]="startDate.value"
           />
         </div>
       </div>

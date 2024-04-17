@@ -90,9 +90,9 @@
                 ngModel
                 name="collegeName"
                 #collegeName="ngModel"
-                id="lastName"
+                id="collegeName"
                 class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"            
-                placeholder="Last Name"
+                placeholder="College Name"
                 required
               />
               @if(collegeName.invalid && collegeName.touched){<span class="text-red-600"
@@ -107,7 +107,7 @@
               >
               <textarea
                 name="address"
-                id="summary"
+                id="address"
                 ngModel
                 name="address"
                 #address="ngModel"
@@ -130,12 +130,9 @@
                 type="date"
                 name="startDate"
                 ngModel
-                name="startDate"
                 #startDate="ngModel"
-                id="gitLink"
-                
+                id="startDate"
                 class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"            
-                placeholder="GitHub Link"
                 required
               />
               @if(startDate.invalid && startDate.touched){<span
@@ -155,10 +152,9 @@
                 ngModel
                 name="endDate"
                 #endDate="ngModel"
-                id="linkedinLink"
+                id="endDate"
                 class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"            
-                placeholder="LinkedIn Link"
-                
+                [min]="startDate.value"
               />
             </div>
           </div>
