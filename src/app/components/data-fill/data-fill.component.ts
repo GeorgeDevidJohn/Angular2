@@ -104,7 +104,7 @@ export class DataFillComponent {
   project!: ProjectsComponent;
 
   openstartModal = true;
-  currentStep = 5;
+  currentStep = 1;
   
   alldetails : any[] = [];
   educationList: any[] = [];
