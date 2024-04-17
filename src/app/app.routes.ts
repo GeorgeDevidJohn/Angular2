@@ -22,6 +22,9 @@ export const routes: Routes = [
   component: ResumeComponent,
   },
     { path: 'projects/:userurl', component: ProjectListComponent },
-    { path: 'projectdetail/:projectdetail', component: ProjectDetailsComponent }
+    { path: 'projectdetail/:projectdetail', component: ProjectDetailsComponent },
+    {path:"**", component:PagenotfoundComponent}
+
+
 
 ];

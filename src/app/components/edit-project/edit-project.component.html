@@ -701,25 +701,25 @@
     class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
     [@bounceIn800]
   >
-    <app-education [educationList]="educationdetails" />
+    <app-education [UserId]="userId" [educationList]="educationdetails" />
   </div>
   <div
     *ngIf="setCurrentSection === 3"
     class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
     [@bounceIn800]
   >
-    <app-experiance />
+    <app-experiance [UserId]="userId" [experienceList]="experience" />
   </div>
   <div
     *ngIf="setCurrentSection === 4"
     class="max-w-4xl h-full sm:mx-auto mx-4 my-8"
     [@bounceIn800]
   >
-    <app-projects />
+    <app-projects [UserId]="userId" [projectList]="project" />
   </div>
   <div class=" " *ngIf="setCurrentSection === 5">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <form (ngSubmit)="addFinal()" [formGroup]="themeForm">
+      <form (ngSubmit)="editFinal()" [formGroup]="themeForm">
         <div
           class="mx-auto mt-16 max-w-2xl bg-white rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
         >
@@ -751,10 +751,10 @@
                     /
                   </div>
                   <input
+                  readonly
                     type="text"
                     name="url"
-                    ngModel
-                    #url="ngModel"
+                    formControlName ="url"
                     id="url"
                     class="w-full rounded border bg-white px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
                     placeholder="sample-portfolio"
@@ -763,7 +763,7 @@
                 </div>
               </li>
               <br />
-              @if(url.invalid && url.touched){<span class="text-red-600"
+              @if(themeForm.get('url')?.invalid && themeForm.get('url')?.touched){<span class="text-red-600"
                 >required</span
               >}
             </ul>
@@ -778,32 +778,32 @@
                 </p>
                 <div class="flex gap-4 themeselector">
                   <div>
-                    <input type="radio" name="theme" id="red" value="red" />
+                    <input type="radio" name="theme" id="red" value="red" formControlName="theme" />
                     <label for="red"><span class="red"></span></label>
                   </div>
                   <div>
-                    <input type="radio" name="theme" id="green" />
+                    <input type="radio" name="theme" id="green"  value="green" formControlName="theme"/>
                     <label for="green"><span class="green"></span></label>
                   </div>
 
                   <div>
-                    <input type="radio" name="theme" id="orange" />
+                    <input type="radio" name="theme" id="orange" value="orange" formControlName="theme" />
                     <label for="orange"><span class="orange"></span></label>
                   </div>
                   <div>
-                    <input type="radio" name="theme" id="blue" />
+                    <input type="radio" name="theme" id="blue" value="blue" formControlName="theme" />
                     <label for="blue"><span class="blue"></span></label>
                   </div>
                   <div>
-                    <input type="radio" name="theme" id="violet" />
+                    <input type="radio" name="theme" id="violet"  value="violet" formControlName="theme" />
                     <label for="violet"><span class="violet"></span></label>
                   </div>
                 </div>
 
-                <a
-                  href="#"
+                <button
+                  type="submit"
                   class="mt-10 block w-full rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                  >Submit</a
+                  >Submit</button
                 >
               </div>
             </div>

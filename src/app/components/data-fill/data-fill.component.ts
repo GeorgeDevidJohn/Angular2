@@ -92,6 +92,7 @@ import { HttpClientModule } from '@angular/common/http';
   ]
 })
 export class DataFillComponent {
+  valuePresnt: any;
   constructor(private router: Router ,private _dataService: DataService) { }
   @ViewChild('childRef')
   education!: EducationComponent;
@@ -103,7 +104,7 @@ export class DataFillComponent {
   project!: ProjectsComponent;
 
   openstartModal = true;
-  currentStep = 1;
+  currentStep = 5;
   
   alldetails : any[] = [];
   educationList: any[] = [];
@@ -252,6 +253,19 @@ pronextStep(){
     })();
   }
 
-
-
+  onInputChange(event:any){
+    const value = (event.target as HTMLInputElement).value;
+    console.log(value)
+    this._dataService.urlChecker(value).subscribe(
+      (data) => {
+        console.log(data);
+        this.valuePresnt = data.exists;
+        // Handle response if needed
+      },
+      (error) => {
+        console.error('Error:', error);
+        // Handle error if needed
+      }
+    );
+  }
 }

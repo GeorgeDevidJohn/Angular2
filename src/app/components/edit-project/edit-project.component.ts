@@ -110,6 +110,9 @@ import { HttpClientModule } from '@angular/common/http';
 export class EditProjectComponent {
   resumeDetails: any;
   educationdetails: any;
+  experience: any;
+  project: any;
+  userId: any;
   constructor(private router: Router ,private _dataService: DataService) { this.onEdit()}
   showNav = false;
   setCurrentSection = 1;
@@ -139,15 +142,14 @@ export class EditProjectComponent {
   });
 
   themeForm = new FormGroup({
+    _id: new FormControl(''),
    url : new FormControl('', [Validators.required]),
    theme : new FormControl('', [Validators.required]),
   })
 
  
 onEdit(){
-   {
-    
-    
+   { 
       const username = "george-devid";
       this._dataService.getData(username).subscribe((data) => {
         
@@ -157,19 +159,22 @@ onEdit(){
         this.resumeDetails = data.data
         console.log(this.resumeDetails.educations)
         this.educationdetails = this.resumeDetails.educations
+        this.experience = this.resumeDetails.experiences
+        this.project = this.resumeDetails.projects
+        this.userId = this.resumeDetails.customer._id;
+        this.patchValueToTheme(this.resumeDetails.customer);
         this.onPathchPersonalDetails(this.resumeDetails.customer)
-        }
-       
+        }   
       }); 
       
       console.log(this.resumeDetails)
       //this.onPathchPersonalDetails(this.resumeDetails.customer)
       // This will log "george-devid" to the console
-
 }
 }
 
 onPathchPersonalDetails(customer :any ){
+  
   this.personalForm.patchValue({
     lastName : customer.lastName,
     firstName : customer.firstName,
@@ -198,22 +203,39 @@ onPathchPersonalDetails(customer :any ){
       profilePicture: this.personalForm.value.profilePicture
     };
    
-    this._dataService.updatePersonals(personal).subscribe((data) => console.log(data));
+    this._dataService.updatePersonals(personal).subscribe((data) => this.onEdit());
+    this.onEdit()
     // Optionally, you can clear the form fields after submission
      
   }
 
-  addFinal(){
+  editFinal(){
     const theme = {
+      _id: this.themeForm.value._id,
       url: this.themeForm.value.url,
-      theam: this.themeForm.value.theme,
+      themeColor: this.themeForm.value.theme,
       
     };
-   
-    this._dataService.updateTheme(theme).subscribe((data) => console.log(data));
+    this._dataService.updatePersonals(theme).subscribe((data) =>   this.onEdit());
+    
+    
+   console.log(theme)
+   // this._dataService.updateTheme(theme).subscribe((data) => console.log(data));
 
   }
 
-
+  patchValueToTheme(data:any){
+    // this.themeForm = new FormGroup({
+    //   url: new FormControl({ value: '', disabled: true }) // Initialize the form control with disabled status
+    // });
+    
+    console.log(data)
+    this.themeForm.patchValue({
+      _id:data._id,
+      url:data.urlName,
+      theme: data.themeColor
+    });
+  }
+ 
 
 }

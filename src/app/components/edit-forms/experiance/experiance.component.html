@@ -299,7 +299,7 @@ class="center relative inline-block select-none whitespace-nowrap rounded-full b
 </div>
 <h3 class="font-bold"> {{experience.companyName}}</h3>
 <p class="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
-{{ experience.companyaddress }}
+{{ experience.address }}
 </p>
 <div class="mt-4 ">
   <div class="flex items-center gap-1 justify-between">
@@ -308,7 +308,7 @@ class="center relative inline-block select-none whitespace-nowrap rounded-full b
     <p
       class="block font-sans text-xs font-normal text-gray-700 antialiased"
     >
-      {{ experience.companystartDate }} - {{ experience.companyendDate }}
+      {{ experience.startDate | date: 'yyyy/MM/dd' }} - {{ experience.endDate | date: 'yyyy/MM/dd' }}
     </p>
   </div>
   <div class="flex gap-x-4">

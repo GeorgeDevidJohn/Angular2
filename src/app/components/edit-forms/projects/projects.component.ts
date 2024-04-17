@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule,
   FormGroup,
@@ -10,6 +10,7 @@ import { trigger, transition, animate, keyframes, style } from '@angular/animati
 import { Router } from '@angular/router';
 import { DataService } from '../../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EditProjectComponent } from '../../edit-project/edit-project.component';
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -37,7 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
   ]
 })
 export class ProjectsComponent {
-  constructor(private router: Router ,private _dataService: DataService) { }
+  @Input() projectList : any;
+  @Input() UserId : any;
+  resumeDetails: any;
+  user_id: any;
+  constructor(private router: Router ,private _dataService: DataService, private _parent: EditProjectComponent) { }
   openEditProjectModalValue = false;
   openModal = false;
   projects: any[] = [];
@@ -47,38 +52,50 @@ export class ProjectsComponent {
   skills:string='';
   learningOutcomes:string='';
   projectThumnail:string='';
+  ngOnInit(): void {
+    this.user_id = this.UserId;
+    console.log("this value:")
+    if(this.projectList){
+      console.log(this.projectList)
+    this.onEdit();
+    }
+  }
 
+  onEdit(){
+    console.log(this.projectList)
+    this.projects= this.projectList; 
+  }
 
 addProjects( form: NgForm){
 
   const project = {
-   title : form.value.title,
+    _id: form.value._id,
+   projectTitle : form.value.title,
     description:form.value.description,
-    gitLink: form.value.gitLink,
+    githubLink: form.value.gitLink,
     skills: form.value.skills,
     learningOutcomes: form.value.learningOutcomes,
-    projectThumnail: form.value.projectThumnail
+    userId  : this.user_id    
   };
-  this.projects.push(project);
-  this._dataService.updateProjects(this.projects).subscribe((data) => console.log(data));
+  
+  this._dataService.addProjects(project).subscribe((data) => this.onProjectEdit());
   // Optionally, you can clear the form fields after submission
   this.clearProjectForm();
   this.closeProModal();
 }
 
 editProjects(){
-
-
-
   const project = {
-   title : this.projectForm.value.title,
+    _id: this.projectForm.value._id,
+    projectTitle : this.projectForm.value.title,
     description:this.projectForm.value.description,
-    gitLink: this.projectForm.value.gitLink,
+    githubLink: this.projectForm.value.gitLink,
     skills: this.projectForm.value.skills,
     learningOutcomes: this.projectForm.value.learningOutcomes,
-    projectThumnail: this.projectForm.value.projectThumnail
   };
 
+  this._dataService.updateProjects(project).subscribe((data) =>  this.onProjectEdit());
+  
   // Optionally, you can clear the form fields after submission
   this.clearProjectForm();
   this.closeProModal();
@@ -94,6 +111,7 @@ clearProjectForm(){
 }
 
 projectForm = new FormGroup({
+  _id: new FormControl(''),
   title : new FormControl('', [Validators.required]),
   gitLink : new FormControl(''),
   skills: new FormControl('', [Validators.required]),
@@ -117,13 +135,36 @@ openEditProjectModal(project : any){
 
 patchProjForm(project :any ){
   this.projectForm.patchValue({
-    title: project.title,
-    gitLink: project.gitLink,
+    _id:project._id,
+    title: project.projectTitle,
+    gitLink: project.githubLink,
     skills: project.skills,
     description: project.description,
     learningOutcomes: project.learningOutcomes,
-    projectThumnail: project.projectThumnail
+    projectThumnail: project.project_pic
   });
+}
+reloadComponent() {
+  console.log("reload ")
+  this.router.navigateByUrl('/edit', { skipLocationChange: true })
+}
+onProjectEdit(){
+  { 
+     const username = "george-devid";
+     this._dataService.getData(username).subscribe((data) => {
+       
+       if(data.status === 404){
+         this.router.navigateByUrl('/pagenotfound');
+       }{
+       this.resumeDetails = data.data
+       this.projects= this.resumeDetails.projects;
+       }   
+     }); 
+     
+     console.log(this.resumeDetails)
+     //this.onPathchPersonalDetails(this.resumeDetails.customer)
+     // This will log "george-devid" to the console
+}
 }
 
 }

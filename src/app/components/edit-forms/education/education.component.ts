@@ -39,8 +39,11 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class EducationComponent implements OnInit{
   startDate: any;
+  resumeDetails: any;
+  userId: string | undefined;
   constructor(private router: Router ,private _dataService: DataService) { }
   @Input() educationList : any;
+  @Input() UserId : any;
   openModal = false;
   openEditEduModalValue = false;
   educations: any[] = [];
@@ -50,6 +53,7 @@ export class EducationComponent implements OnInit{
   // startDate: string = '';
   endDate: string = '';
   ngOnInit(): void {
+    this.userId = this.UserId;
     console.log("this value:")
     if(this.educationList){
       console.log(this.educationList)
@@ -67,21 +71,21 @@ export class EducationComponent implements OnInit{
     this.closeEduModal()
     const education = {
       qualification: form.value.qualification,
-      college: form.value.collegeName,
+      collegeName: form.value.collegeName,
       address: form.value.address,
       startDate: form.value.startDate,
-      endDate: this.endDate
+      endDate:  form.value.endDate,
+      userId :this.userId,
     };
-    this.educations.push(education);
-    this._dataService.updateEducation(this.educations).subscribe((data) => console.log(data));
+  //  this.educations.push(education);
+    this._dataService.addEducation(education).subscribe((data) => this.onEduEdit());
     // Optionally, you can clear the form fields after submission
     this.clearForm();
     this.closeEduModal();
     
   }
 
-  eduForm = new FormGroup({
-    
+  eduForm = new FormGroup({  
     qualification : new FormControl('', [Validators.required]),
     college : new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -156,9 +160,29 @@ export class EducationComponent implements OnInit{
       startDate: this.eduForm.value.startDate,
       endDate: this.eduForm.value.endDate
     };
-    this._dataService.updateEducation(education).subscribe((data) => console.log(data));
-    // Optionally, you can clear the form fields after submission
+    this._dataService.updateEducation(education).subscribe((data) => this.onEduEdit());
+   
     this.clearForm();
     this.closeEduModal();
+  }
+
+  onEduEdit(){
+    { 
+       const username = "george-devid";
+       this._dataService.getData(username).subscribe((data) => {
+         
+         if(data.status === 404){
+           this.router.navigateByUrl('/pagenotfound');
+         }{
+         this.resumeDetails = data.data
+         console.log("sample")
+         this.educations= this.resumeDetails.educations;
+         }   
+       }); 
+       
+      
+       //this.onPathchPersonalDetails(this.resumeDetails.customer)
+       // This will log "george-devid" to the console
+  }
   }
 }

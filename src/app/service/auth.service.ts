@@ -16,7 +16,7 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   private myToken = '';
-  private url: string = 'http://localhost:5000/api/auth';
+  private url: string = 'https://job-portal-beryl-theta.vercel.app/api/login';
   private urlRegister: string = 'http://localhost:5000/api/users';
 
   constructor(private http: HttpClient) { }
