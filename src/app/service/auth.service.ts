@@ -57,7 +57,6 @@ export class AuthService {
   logout() {
     this._isLoggedIn$.next(false);
     this.myToken = '';
-
     localStorage.removeItem('authToken');
   }
   register(firstName: string,lastName: string, email: string, password: string): Observable<IAuth> {

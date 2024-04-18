@@ -138,6 +138,12 @@
                         class="text-red-600"
                         >Provide valid email</span
                       >}
+                      @if(errorMessage !=""){
+                        <span
+                        class="text-red-600"
+                        >{{errorMessage}}</span
+                      >
+                      }
                     </div>
                   </div>
                 </div>

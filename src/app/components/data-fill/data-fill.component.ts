@@ -14,6 +14,7 @@ import { trigger, transition, animate, keyframes, style } from '@angular/animati
 import { Router } from '@angular/router';
 import { DataService } from '../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-data-fill',
   standalone: true,
@@ -93,7 +94,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class DataFillComponent {
   valuePresnt: any;
-  constructor(private router: Router ,private _dataService: DataService) { }
+  constructor(private router: Router ,private _dataService: DataService, private cookieService: CookieService ) { }
   @ViewChild('childRef')
   education!: EducationComponent;
 
@@ -141,6 +142,7 @@ export class DataFillComponent {
       theam: this.themeForm.value.theme,      
     };
   const resume = {
+    _id:  this.cookieService.get('userId'),
       phone: this.personals[0].phone,
       address: this.personals[0].address,
       email: this.personals[0].email,
@@ -179,6 +181,7 @@ export class DataFillComponent {
   addPersonal(){
 
     const personal = {
+      _id:  this.cookieService.get('userId'),
       firstName: this.personalForm.value.firstName,
       lastName: this.personalForm.value.lastName,
       summary: this.personalForm.value.summary,

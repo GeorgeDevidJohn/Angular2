@@ -63,7 +63,13 @@ export class LoginComponent {
         const myCookieValue = this.cookieService.get('urlName');
         this.myStoredData = myCookieValue;
         console.log(myCookieValue);
-   
+        if (data && data.success) {
+          const id = data.data.id;
+          // Save the id to a cookie
+          this.cookieService.set('userId', id);
+          
+          // Proceed with other logic (navigation, etc.)
+        }
         if (data && data.success && data.data && data.data.isUrl) {
           // isUrl is true, perform actions accordingly
           console.log('isUrl is true');
@@ -80,7 +86,9 @@ export class LoginComponent {
       },
       (error) => {
         console.error('Error:', error);
-        // Handle error if needed
+        console.log(error.error);
+        
+        this.errorMessage = error.error.error;
       }
     );
   
