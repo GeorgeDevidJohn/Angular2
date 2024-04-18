@@ -1,36 +1,48 @@
-<nav class="bg-gray-900 p-4 w-full fixed z-50" >
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="flex-shrink-0">
-        <!-- Your logo here -->
-        <a routerLink="/" class="text-white text-lg font-bold">Your Logo</a>
-      </div>
-      <div class="hidden lg:block">
-        <ul class="flex space-x-4">
-          <li><a [routerLink]="'/'+data" class="text-white">Home</a></li>
-          <li><a [routerLink]="'/projects/'+data" class="text-white">Projects</a></li>       
-          <li><a routerLink="/login" class="text-white">Login</a></li>
-          <!-- Add more links as needed -->
-        </ul>
-      </div>
-      <div class="block lg:hidden">
-        <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-            <path [ngClass]="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7"></path>
-            <path [ngClass]="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" class="hidden" stroke-linecap="round" stroke-linejoin="round"
-              stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
+<nav class="bg-gray-900 p-4 w-full fixed z-50">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex-shrink-0">
+      <img src="/assets/portfolio.png" alt="Your Logo" class="h-10">
     </div>
-    <div *ngIf="mobileMenuOpen" class="lg:hidden">
-      <ul class="mt-2">
-        <li><a [routerLink]="'/'+data.urlName" class="text-white">Home</a></li>
-          <li><a [routerLink]="'/projects/'+data.urlName" class="text-white">Projects</a></li>        
-          <li><a routerLink="/login" class="text-white">Login</a></li>
-        <!-- Add more links as needed -->
+    <div class="hidden lg:block">
+      <ul class="flex space-x-4">
+        <li><a [routerLink]="'/'+data" class="text-white">Home</a></li>
+        <li><a [routerLink]="'/projects/'+data" class="text-white">Projects</a></li>       
+        <li><a routerLink="/login" class="text-white">Login</a></li>
       </ul>
     </div>
-  </nav>
+    <div class="block lg:hidden">
+      <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+          <path [ngClass]="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+          <path [ngClass]="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" class="hidden" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
 
-  <router-outlet></router-outlet>
+<div class="lg:hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-50 transform transition-transform ease-in-out"
+  [class.translate-x-0]="mobileMenuOpen" [class.translate-x-full]="!mobileMenuOpen"
+  style="width: 25vw; right: 0; left: auto;" *ngIf="mobileMenuOpen">
+  <div class="flex justify-end">
+    <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+        <path class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+        <path class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="flex items-center justify-center h-full">
+    <ul class="flex flex-col space-y-4">
+      <li><a [routerLink]="'/'+data" class="text-white">Home</a></li>
+      <li><a [routerLink]="'/projects/'+data" class="text-white">Projects</a></li>        
+      <li><a routerLink="/login" class="text-white">Login</a></li>
+    </ul>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
