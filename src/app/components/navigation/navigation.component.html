@@ -7,7 +7,8 @@
       <ul class="flex space-x-4">
         <li><a [routerLink]="'/'+data" class="text-white">Home</a></li>
         <li><a [routerLink]="'/projects/'+data" class="text-white">Projects</a></li>       
-        <li><a routerLink="/login" class="text-white">Login</a></li>
+        <li *ngIf="!isLogedIn"><a routerLink="/login" class="text-white">Login</a></li>
+        <li *ngIf="isLogedIn"><button (click)="SignOut()"><a class="text-white">LogOut</a></button></li>
       </ul>
     </div>
     <div class="block lg:hidden">

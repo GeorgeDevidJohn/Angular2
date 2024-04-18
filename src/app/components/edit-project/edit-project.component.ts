@@ -160,7 +160,8 @@ onEdit(){
    { 
 
     const urlName =  this.cookieService.get('urlName');
-    if(!urlName){
+    const id =  this.cookieService.get('userId');
+    if(!urlName || !id){
       this.router.navigateByUrl('/login');
     }
 
