@@ -102,9 +102,9 @@ export class DataService {
   }
 
   addUser(education: any): Observable<any> {
-    return this.http.post<any>("http://localhost:3000/api/login" , education);
+    return this.http.post<any>(this.apiUrl+"login" , education);
   }
   addRealUser(education: any): Observable<any> {
-    return this.http.post<any>("http://localhost:3000/api/user/signup" , education);
+    return this.http.post<any>(this.apiUrl+"user/signup" , education);
   }
 }
