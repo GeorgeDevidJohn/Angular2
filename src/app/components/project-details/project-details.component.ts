@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../service/data.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-project-details',
@@ -17,7 +18,7 @@ export class ProjectDetailsComponent {
   projectLearningOutcomeArray: any;
   urlName: any;
 
-  constructor(private router: Router,private _dataService: DataService,private route: ActivatedRoute) {
+  constructor(private router: Router,private _dataService: DataService,private route: ActivatedRoute,private cookieService :CookieService) {
    
     this.route.paramMap.subscribe(params => {
       const id = params.get('projectdetail');
@@ -29,7 +30,7 @@ export class ProjectDetailsComponent {
         {
           console.log(data)
         this.projectDetails = data.data;
-        this.urlName = data.urlName;
+        this.urlName = this.cookieService.get('urlName');;
         this.projectSkillsArray = this.projectDetails.skills.split(',');
         this.projectLearningOutcomeArray = this.projectDetails.learningOutcomes.split(',');
        
