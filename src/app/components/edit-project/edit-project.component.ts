@@ -14,6 +14,7 @@ import { ExperianceComponent } from '../edit-forms/experiance/experiance.compone
 import { Router } from '@angular/router';
 import { DataService } from '../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UrlStorageService } from '../../url-storage-service.service';
 
 @Component({
   selector: 'app-edit-project',
@@ -113,7 +114,12 @@ export class EditProjectComponent {
   experience: any;
   project: any;
   userId: any;
-  constructor(private router: Router ,private _dataService: DataService) { this.onEdit()}
+  constructor(private router: Router ,
+    private _dataService: DataService ,
+    private urlService: UrlStorageService
+    ) { this.onEdit()};
+    
+    
   showNav = false;
   setCurrentSection = 1;
   showDiv = true;
@@ -150,7 +156,10 @@ export class EditProjectComponent {
  
 onEdit(){
    { 
-      const username = "george-devid";
+
+    const urlName = this.urlService.getUrlName();
+
+      const username = urlName;
       this._dataService.getData(username).subscribe((data) => {
         
         if(data.status === 404){

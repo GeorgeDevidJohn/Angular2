@@ -12,11 +12,12 @@ export interface IAuth {
 })
 export class AuthService {
   public _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  private apiUrl: string = 'http://localhost:3000/api/';
 
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   private myToken = '';
-  private url: string = 'https://job-portal-beryl-theta.vercel.app/api/login';
+  private url: string = 'http://localhost:3000/api/login';
   private urlRegister: string = 'http://localhost:5000/api/users';
 
   constructor(private http: HttpClient) { }
@@ -36,6 +37,23 @@ export class AuthService {
         })
       );
   }
+
+  loginDetails(alldetails: any): Observable<any> {
+    // Define your headers
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', // Assuming you're sending JSON data
+      // Add any other headers you need, such as authorization token, etc.
+    });
+  
+    // Include headers in the options parameter of the post request
+    const options = { headers: headers };
+  
+    // Make the HTTP POST request with headers included
+    return this.http.post<any>(this.apiUrl + "customers/user", alldetails, options);
+  }
+
+
+
   logout() {
     this._isLoggedIn$.next(false);
     this.myToken = '';

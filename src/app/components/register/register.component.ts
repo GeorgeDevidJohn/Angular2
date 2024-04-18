@@ -7,21 +7,21 @@ import {  FormsModule,
   FormGroup,
   FormControl,
   Validators, } from '@angular/forms';
-import { AuthService, IAuth } from '../../service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from '../../service/data.service';
 @Component({
   selector: 'app-register',
   standalone: true,
-  providers:[AuthService],
+  providers:[DataService],
   imports: [RouterOutlet,FormsModule,RouterLink, ReactiveFormsModule,HttpClientModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
-  authToken: IAuth = { token: '' };
   errorMessage: string = '';
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router ,private _dataService: DataService) { }
+
   resgisterform = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
@@ -31,29 +31,39 @@ export class RegisterComponent {
     confirmPassword: new FormControl('', [
         Validators.required]),
   });
-  
+
+   
   onSubmit() {
-    this.authService
-    .register(
-      this.resgisterform.value.firstName!,
-      this.resgisterform.value.lastName!,
-      this.resgisterform.value.email!,
-      this.resgisterform.value.password!
-    )
-    .subscribe({
-      next: (token) => {
-        console.log(token);
-        // this.authToken = token;
-        //localStorage.setItem('authtoken', token.token);
-        this.router.navigateByUrl('/edit');
+   const resume = {
+      "email": this.resgisterform.value.email!,
+      "password": this.resgisterform.value.password!,
+      "firstName": this.resgisterform.value.firstName!,
+      "lastName": this.resgisterform.value.lastName!,
+  
+    }
+    
+
+    this._dataService.addRealUser(resume).subscribe(
+      (data) => {
+        console.log(data);
       },
-      error: (e) => {
-        console.log(e.error.errors);
-        this.errorMessage = e.error.errors[0].msg;
-      },
-      complete: () => {
-        console.info('complete');
-      },
-    });
+      (error) => {
+        console.log(error);
+      }
+    );
+
+
+
+    // this._dataService.addDetails(resume).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     this.alldetails= [];
+    //     // Handle response if needed
+    //   },
+    //   (error) => {
+    //     console.error('Error:', error);
+    //     // Handle error if needed
+    //   }
+    // );
   }
 }
