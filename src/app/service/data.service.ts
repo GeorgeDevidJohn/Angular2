@@ -65,7 +65,7 @@ export class DataService {
     const options = { headers: headers };
   
     // Make the HTTP POST request with headers included
-    return this.http.post<any>(this.apiUrl + "customers", alldetails, options);
+    return this.http.post<any>("http://localhost:3000/api/login?id=12", alldetails, options);
   }
   updatePersonals(alldetails: any): Observable<any> {
     return this.http.put<any>(this.apiUrl+"customers?id="+ alldetails._id , alldetails);
@@ -99,5 +99,12 @@ export class DataService {
  
   urlChecker(url: any): Observable<any> {
     return this.http.get<any>(this.apiUrl+"urlnamecheck?url="+url);
+  }
+
+  addUser(education: any): Observable<any> {
+    return this.http.post<any>("http://localhost:3000/api/login" , education);
+  }
+  addRealUser(education: any): Observable<any> {
+    return this.http.post<any>("http://localhost:3000/api/user/signup" , education);
   }
 }

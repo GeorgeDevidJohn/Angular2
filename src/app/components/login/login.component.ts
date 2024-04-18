@@ -6,53 +6,105 @@ import {  FormsModule,
   FormControl,
   Validators, } from '@angular/forms';
   import { RouterOutlet,RouterLink, Router } from '@angular/router';
-import { AuthService, IAuth } from '../../service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from '../../service/data.service';
+import { CookieService } from 'ngx-cookie-service';
+import { UrlStorageService } from '../../url-storage-service.service';
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  providers:[AuthService],
+  providers:[DataService,CookieService],
   imports: [FormsModule, ReactiveFormsModule,RouterOutlet,RouterLink,HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginComponent {
-  authToken: IAuth = { token: '' };
+  // authToken: IAuth = { token: '' };
+  myStoredData: any;
 
   errorMessage: string = '';
 
-  constructor(private authService: AuthService,private router: Router) { }
+  constructor(private authService: DataService,
+    private router: Router,
+    private cookieService: CookieService,
+    private urlStorageService: UrlStorageService
+  
+  ) { }
  
   ngOnInit() {
   }
  
-
+ 
 
   loginform = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [
       Validators.required]),
   });
- 
+  
+   
+
   onSubmit() {
+   const resume1 = {
+      email: this.loginform!.value.email!,
+      password: this.loginform!.value.password!
+    };
+   
+  
     this.authService
-    .login(this.loginform.value.email!, this.loginform.value.password!)
-    .subscribe({
-      next: (token) => {
-        console.log(token);
-        // this.authToken = token;
-        //localStorage.setItem('authtoken', token.token);
-        this.router.navigateByUrl('/grocery');
+    .addUser(resume1).
+    subscribe(
+      (data) => {
+        console.log(data);
+        // this.alldetails= [];
+        // Handle response if needed
+        const myCookieValue = this.cookieService.get('urlName');
+        this.myStoredData = myCookieValue;
+        console.log(myCookieValue);
+   
+        if (data && data.success && data.data && data.data.isUrl) {
+          // isUrl is true, perform actions accordingly
+          console.log('isUrl is true');
+          this.router.navigateByUrl('/edit');
+          this.urlStorageService.setUrlName(data.data.urlName);
+          this.urlStorageService.setUserId(data.data.userId);
+          // Handle response if needed
+        } else {
+          // isUrl is false or not present, perform actions accordingly
+          console.log('isUrl is false or not present');
+          this.router.navigateByUrl('/data');
+          // Handle response if needed
+        }
       },
-      error: (e) => {
-        console.log(e.error.errors);
-        this.errorMessage = e.error.errors;
-      },
-      complete: () => {
-        console.info('complete');
-      },
-    });
+      (error) => {
+        console.error('Error:', error);
+        // Handle error if needed
+      }
+    );
+  
+
+
+
+
+    // this.authService
+    // .loginDetails(this.resume1)
+    // .subscribe({
+    //   next: (token) => {
+    //     console.log(token);
+    //     // this.authToken = token;
+    //     //localStorage.setItem('authtoken', token.token);
+    //     this.router.navigateByUrl('/grocery');
+    //   },
+    //   error: (e) => {
+    //     console.log(e.error);
+    //     this.errorMessage = e.error.errors;
+    //   },
+    //   complete: () => {
+    //     console.info('complete');
+    //   },
+    // });
    
   }
 }
