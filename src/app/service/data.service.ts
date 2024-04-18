@@ -61,11 +61,9 @@ export class DataService {
       // Add any other headers you need, such as authorization token, etc.
     });
   
-    // Include headers in the options parameter of the post request
-    const options = { headers: headers };
   
     // Make the HTTP POST request with headers included
-    return this.http.post<any>("http://localhost:3000/api/login?id=12", alldetails, options);
+    return this.http.post<any>(this.apiUrl+"customers", alldetails);
   }
   updatePersonals(alldetails: any): Observable<any> {
     return this.http.put<any>(this.apiUrl+"customers?id="+ alldetails._id , alldetails);

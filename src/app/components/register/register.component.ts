@@ -46,9 +46,13 @@ export class RegisterComponent {
     this._dataService.addRealUser(resume).subscribe(
       (data) => {
         console.log(data);
+        this.errorMessage = "";
+        this.router.navigateByUrl('/login');
       },
       (error) => {
         console.log(error);
+        this.errorMessage = error.error.message;
+        
       }
     );
 
