@@ -94,6 +94,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DataFillComponent {
   valuePresnt: any;
+  UrlNameTo: string | null | undefined;
   constructor(private router: Router ,private _dataService: DataService, private cookieService: CookieService ) { }
   @ViewChild('childRef')
   education!: EducationComponent;
@@ -133,6 +134,11 @@ export class DataFillComponent {
   
  
   ngOnInit() {
+ const id = this.cookieService.get('userId');
+  
+    if(!id){
+      this.router.navigateByUrl('/login');
+    }
   }
  
   addFinal(){
@@ -141,6 +147,7 @@ export class DataFillComponent {
       url: this.themeForm.value.url,
       theam: this.themeForm.value.theme,      
     };
+  const urlNameto = theme.url;
   const resume = {
     _id:  this.cookieService.get('userId'),
       phone: this.personals[0].phone,
@@ -163,13 +170,17 @@ export class DataFillComponent {
    
   
     console.log(resume)
-    
+   
     // Once alldetails is populated, you can call the service
     this._dataService.addDetails(resume).subscribe(
       (data) => {
+
         console.log(data);
         this.alldetails= [];
-        // Handle response if needed
+        if(urlNameto){
+        this.cookieService.set('urlName',urlNameto );
+      }
+        this.router.navigateByUrl('/edit');
       },
       (error) => {
         console.error('Error:', error);

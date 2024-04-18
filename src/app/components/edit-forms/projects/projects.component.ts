@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditProjectComponent } from '../../edit-project/edit-project.component';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -42,7 +43,7 @@ export class ProjectsComponent {
   @Input() UserId : any;
   resumeDetails: any;
   user_id: any;
-  constructor(private router: Router ,private _dataService: DataService, private _parent: EditProjectComponent) { }
+  constructor(private router: Router ,private _dataService: DataService, private _parent: EditProjectComponent,private cookieService: CookieService ) { }
   openEditProjectModalValue = false;
   openModal = false;
   projects: any[] = [];
@@ -150,7 +151,7 @@ reloadComponent() {
 }
 onProjectEdit(){
   { 
-     const username = "george-devid";
+     const username = this.cookieService.get('urlName');
      this._dataService.getData(username).subscribe((data) => {
        
        if(data.status === 404){

@@ -8,14 +8,15 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
 import { ResumeComponent } from './components/resume/resume.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { authGuard } from './auth.guard';
 
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
    { path: 'login', component: LoginComponent },
-  { path: 'data', component: DataFillComponent },
-  {path: 'edit', component: EditProjectComponent},
+  { path: 'data', component: DataFillComponent ,canActivate: [authGuard]  },
+  {path: 'edit', component: EditProjectComponent, canActivate: [authGuard] },
   {path:'home',component:HomeComponent},
   {path:'pagenotfound',component:PagenotfoundComponent},
   {
@@ -23,9 +24,6 @@ export const routes: Routes = [
   component: ResumeComponent,
   },
     { path: 'projects/:userurl', component: ProjectListComponent },
-    { path: 'projectdetail/:projectdetail', component: ProjectDetailsComponent },
-    {path:"**", component:PagenotfoundComponent}
-
-
-
+    { path: 'projectdetail/:projectdetail', component: ProjectDetailsComponent }
+   
 ];

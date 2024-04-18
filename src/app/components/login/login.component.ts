@@ -65,9 +65,12 @@ export class LoginComponent {
         console.log(myCookieValue);
         if (data && data.success) {
           const id = data.data.id;
+          const urlName = data.data.urlName;
           // Save the id to a cookie
           this.cookieService.set('userId', id);
-          
+          if(urlName !=""){
+          this.cookieService.set('urlName', urlName);
+          }
           // Proceed with other logic (navigation, etc.)
         }
         if (data && data.success && data.data && data.data.isUrl) {

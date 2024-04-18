@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 import { DataService } from '../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UrlStorageService } from '../../url-storage-service.service';
+import { AuthService } from '../../service/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-edit-project',
@@ -116,7 +118,7 @@ export class EditProjectComponent {
   userId: any;
   constructor(private router: Router ,
     private _dataService: DataService ,
-    private urlService: UrlStorageService
+    private urlService: UrlStorageService, private _auth: AuthService,private cookieService: CookieService 
     ) { this.onEdit()};
     
     
@@ -157,13 +159,16 @@ export class EditProjectComponent {
 onEdit(){
    { 
 
-    const urlName = this.urlService.getUrlName();
+    const urlName =  this.cookieService.get('urlName');
+    if(!urlName){
+      this.router.navigateByUrl('/login');
+    }
 
       const username = urlName;
       this._dataService.getData(username).subscribe((data) => {
         
         if(data.status === 404){
-          this.router.navigateByUrl('/pagenotfound');
+          this.router.navigateByUrl('/login');
         }{
         this.resumeDetails = data.data
         console.log(this.resumeDetails.educations)
@@ -181,7 +186,10 @@ onEdit(){
       // This will log "george-devid" to the console
 }
 }
-
+signOut(){
+  this._auth.logout()
+  this.router.navigateByUrl('/login');
+}
 onPathchPersonalDetails(customer :any ){
   
   this.personalForm.patchValue({

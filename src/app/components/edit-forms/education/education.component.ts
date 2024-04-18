@@ -13,6 +13,7 @@ import {
 import { Router } from '@angular/router';
 import { DataService } from '../../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-education',
   standalone: true,
@@ -41,7 +42,7 @@ export class EducationComponent implements OnInit{
   startDate: any;
   resumeDetails: any;
   userId: string | undefined;
-  constructor(private router: Router ,private _dataService: DataService) { }
+  constructor(private router: Router ,private _dataService: DataService,private cookieService: CookieService ) { }
   @Input() educationList : any;
   @Input() UserId : any;
   openModal = false;
@@ -168,7 +169,7 @@ export class EducationComponent implements OnInit{
 
   onEduEdit(){
     { 
-       const username = "george-devid";
+       const username = this.cookieService.get('urlName');
        this._dataService.getData(username).subscribe((data) => {
          
          if(data.status === 404){

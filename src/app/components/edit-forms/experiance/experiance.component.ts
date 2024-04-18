@@ -13,6 +13,7 @@ import {
 import { Router } from '@angular/router';
 import { DataService } from '../../../service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-experiance',
   standalone: true,
@@ -42,7 +43,7 @@ export class ExperianceComponent {
   @Input() UserId : any;
   resumeDetails: any;
   user_Id: any;
-  constructor(private router: Router ,private _dataService: DataService) { }
+  constructor(private router: Router ,private _dataService: DataService,private cookieService: CookieService ) { }
   opemEditExpModalValue =false;
   openModal = false;
   experiences: any[] = [];
@@ -151,7 +152,7 @@ export class ExperianceComponent {
 
   onExpEdit(){
     { 
-       const username = "george-devid";
+       const username = this.cookieService.get('urlName');;
        this._dataService.getData(username).subscribe((data) => {
          
          if(data.status === 404){

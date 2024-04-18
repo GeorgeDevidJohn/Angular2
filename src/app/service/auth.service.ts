@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
 
 export interface IAuth {
   token: string;
@@ -20,7 +21,7 @@ export class AuthService {
   private url: string = 'http://localhost:3000/api/login';
   private urlRegister: string = 'http://localhost:5000/api/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private cookieService: CookieService) { }
 
   login(email: string, password: string): Observable<IAuth> {
     return this.http
@@ -55,10 +56,12 @@ export class AuthService {
 
 
   logout() {
-    this._isLoggedIn$.next(false);
-    this.myToken = '';
-    localStorage.removeItem('authToken');
+    this.cookieService.delete('userId');
+    this.cookieService.delete('urlName');
+    console.log("value");
   }
+  
+  
   register(firstName: string,lastName: string, email: string, password: string): Observable<IAuth> {
     return this.http
       .post<IAuth>(this.urlRegister, {
