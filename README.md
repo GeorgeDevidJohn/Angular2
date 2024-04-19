@@ -85,10 +85,6 @@ https://job-portal-beryl-theta.vercel.app/api
 /projects?urlName=george-devid
 
 
-
-
-
-
 ## Update Education
 
 - **Endpoint**: `/educations`
@@ -114,10 +110,10 @@ https://job-portal-beryl-theta.vercel.app/api
 
 **Method:** `PUT`
 
-### Parameters:
+- ### Parameters:
 - `id`: The ID of the project to update
 
-### Body (JSON):
+- ### Body (JSON):
 ```json
 {
   "projectTitle": "Project111",
@@ -128,8 +124,8 @@ https://job-portal-beryl-theta.vercel.app/api
   "project_pic": "wewewe",
   "userId": "66134da67dadc82ce3151df5"
 }
-
-/projects?id=66134f297dadc82ce3151e03
+```
+  /projects?id=66134f297dadc82ce3151e03
 
 
 ## Update Experience
@@ -151,3 +147,27 @@ https://job-portal-beryl-theta.vercel.app/api
 
   /experience?id=660a486d9fc172261fcc6ea5
 
+
+
+
+## Delete Education
+
+- **Endpoint**: `/educations`
+- **Method**: `DELETE`
+- **Parameters**:
+  - `id`: The ID of the education to update
+- **Body**:
+  ```json
+
+  /educations?id=660a486d9fc172261fcc6ea5
+
+## Delete Project
+
+- **Endpoint**: `/projects`
+- **Method**: `DELETE`
+- **Parameters**:
+  - `id`: The ID of the education to update
+- **Body**:
+  ```json
+
+  /projects?id=660a486d9fc172261fcc6ea5
