@@ -21,6 +21,16 @@ https://job-portal-beryl-theta.vercel.app/api
 /customers?id=6614c878f8267779a4dab80d
 
 
+### Get Customer by urlName
+
+- **Endpoint**: `/customers/url`
+- **Method**: `GET`
+- **Parameters**:
+  - `urlName`: Url Name
+- **Example**:
+
+/customers?urlName=george-devid
+
 
 ### Get Education by ID
 
@@ -31,6 +41,15 @@ https://job-portal-beryl-theta.vercel.app/api
 - **Example**:
 /educations?id=660a486d9fc172261fcc6ea5
 
+
+### Get Education by UrlName
+
+- **Endpoint**: `/educations/url`
+- **Method**: `GET`
+- **Parameters**:
+  - `urlName`: Url Name
+- **Example**:
+/educations?urlName=george-devid
 
 
 ### Get Experience by ID
@@ -55,10 +74,20 @@ https://job-portal-beryl-theta.vercel.app/api
 /projects?id=66134f297dadc82ce3151e03
 
 
+### Get Project by UrlNmae
+
+- **Endpoint**: `/projects/url`
+- **Method**: `GET`
+- **Parameters**:
+  - `urlName`: Url Name
+- **Example**:
+
+/projects?urlName=george-devid
 
 
 
-/experiences?id=660a48559fc172261fcc6ea3
+
+
 
 ## Update Education
 
@@ -102,4 +131,23 @@ https://job-portal-beryl-theta.vercel.app/api
 
 /projects?id=66134f297dadc82ce3151e03
 
-##
+
+## Update Experience
+
+- **Endpoint**: `/experience`
+- **Method**: `PUT`
+- **Parameters**:
+  - `id`: The ID of the education to update
+- **Body**:
+  ```json
+  {
+    "position": "Master's Degree",
+    "companyName": "University XYZ",
+    "address": "123 University Ave, City, Country",
+    "startDate": "2020-09-01",
+    "endDate": "2024-05-01",
+    "userId": "66134da67dadc82ce3151df5"
+  }
+
+  /experience?id=660a486d9fc172261fcc6ea5
+
