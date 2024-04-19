@@ -101,7 +101,7 @@ https://job-portal-beryl-theta.vercel.app/api
     "endDate": "2024-05-01",
     "userId": "66134da67dadc82ce3151df5"
   }
-
+``
   /educations?id=660a486d9fc172261fcc6ea5
 
 ## Update Project
@@ -144,7 +144,7 @@ https://job-portal-beryl-theta.vercel.app/api
     "endDate": "2024-05-01",
     "userId": "66134da67dadc82ce3151df5"
   }
-
+``
   /experience?id=660a486d9fc172261fcc6ea5
 
 
@@ -157,7 +157,6 @@ https://job-portal-beryl-theta.vercel.app/api
 - **Parameters**:
   - `id`: The ID of the education to update
 - **Body**:
-  ```json
 
   /educations?id=660a486d9fc172261fcc6ea5
 
@@ -168,6 +167,5 @@ https://job-portal-beryl-theta.vercel.app/api
 - **Parameters**:
   - `id`: The ID of the education to update
 - **Body**:
-  ```json
 
   /projects?id=660a486d9fc172261fcc6ea5
