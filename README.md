@@ -52,10 +52,32 @@ To begin using the Portfolio App, follow these steps:
 ## Support
 
 For any technical support or queries, please reach out to [support@portfolioapp.com](mailto:support@portfolioapp.com).
-
 ## Contributing
 
-Contributions to the Portfolio App are welcome! Please refer to our contributing guidelines for more details.
+Contributions to the Portfolio App are welcome! The development of this application has been supported by a dedicated team, each contributing their unique skills and expertise:
+
+- **George Devid**: Focused on editing forms and refining the user interface to enhance user experience.
+- **Lidia Abey**: Responsible for integrating detailed resume form capabilities, enabling comprehensive user profiles.
+- **Drashti Adhyaru**: Developed the front-end and back-end for the sign-up and sign-in processes, ensuring secure and efficient user access.
+- **Vatsal Patel**: Engineered all backend APIs and made crucial corrections to the UI, ensuring robust functionality and seamless user interactions.
+
+### How to Contribute
+
+We encourage contributions that improve the application's functionality, enhance user experience, or fix issues. If you are interested in contributing, please follow these steps:
+
+1. **Fork the Repository**: Start by forking the repository to your own GitHub account.
+2. **Clone the Forked Repository**: Clone it to your local machine for development.
+3. **Create a New Branch**: Make a new branch for your set of changes.
+4. **Make Your Changes**: Implement your feature or fix.
+5. **Commit Your Changes**: Commit your changes with a clear, detailed message. Make sure to reference any issues your commit addresses.
+6. **Push to Your Fork**: Push your changes to your fork on GitHub.
+7. **Submit a Pull Request**: Open a pull request from your fork's branch to our main branch. Provide a concise description of what the changes are and why they are necessary.
+8. **Review & Merge**: One of the project maintainers will review your contribution. If it's approved, your changes will be merged into the project.
+
+For more detailed instructions, please refer to our [contributing guidelines](LINK_TO_YOUR_CONTRIBUTING_GUIDELINES).
+
+We appreciate your interest in improving the Portfolio App and look forward to your innovative contributions!
+
 
 ## License
 
