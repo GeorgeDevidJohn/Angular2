@@ -660,7 +660,6 @@
               type="file"
               name="profilePicture"
               id="profilePicture"
-              (change)="onFileSelected($event)"
               formControlName="profilePicture"
               accept="image/*"
               class="hidden"
@@ -685,7 +684,7 @@
               </svg>
               Upload Picture
             </label>
-          
+          </div>
         </div>
         <button
           [disabled]="!personalForm.valid"
