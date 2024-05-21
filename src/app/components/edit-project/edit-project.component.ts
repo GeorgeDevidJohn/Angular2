@@ -111,6 +111,35 @@ import { CookieService } from 'ngx-cookie-service';
   ]
 })
 export class EditProjectComponent {
+  selectedFile: File | null = null;
+ onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  uploadFile(): void {
+    if (!this.selectedFile) {
+      console.error('No file selected');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('name', 'one');
+    formData.append('image', this.selectedFile, this.selectedFile.name);
+    formData.append('tokenKey', 'port');
+
+    this.http.post('https://starozza.com/portfolio/upload.php', formData).subscribe(
+      (response) => {
+        console.log('Upload success', response);
+      },
+      (error) => {
+        console.error('Upload error', error);
+      }
+    );
+  }
+  
   resumeDetails: any;
   educationdetails: any;
   experience: any;
